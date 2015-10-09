@@ -1,0 +1,6 @@
+_Store
+target
+.idea
+*.iml
+.project
+.settings/
