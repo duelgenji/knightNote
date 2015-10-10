@@ -1,7 +1,9 @@
 package com.knight.controller.user;
 
+import com.knight.entity.user.User;
 import com.knight.repository.user.UserRepository;
 import com.knight.repository.user.UserSettingsRepository;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -28,10 +30,27 @@ public class UserController {
 
     @RequestMapping("register")
     public Map<String, Object> register(
-            @RequestParam(required = true) String account,
-            @RequestParam(required = true) String password) {
+            @RequestParam String account,
+            @RequestParam String password) {
 
         Map<String, Object> res = new HashMap<>();
+
+
+        Map<String, Object> filters = new HashMap<>();
+
+        if(account!=null){
+            filters.put("account_equal", account);
+        }
+
+        if (userRepository.findAll(filters).size()>0) {
+            res.put("success",0);
+            res.put("message","账户名存在~请换一个试试吧!");
+        }else{
+            User user = new User();
+            user.setAccount(account);
+            user.setPassword(DigestUtils.md5Hex(password));
+            userRepository.save(user);
+        }
 
         res.put("success",1);
         return res;
