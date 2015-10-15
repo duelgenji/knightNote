@@ -1,16 +1,16 @@
 package com.knight.entity.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.envers.Audited;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
-import javax.persistence.FetchType;
-import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.*;
 
 /**
  * 用户设置
  * Created by knight on 15/10/9.
  */
+@Entity
 public class UserSettings extends AbstractPersistable<Long> {
 
 
