@@ -8,5 +8,24 @@
 
 <p> its first step </p>
 
+
+<script src="static/knight/js/jquery-2.1.4.min.js"></script>
+<script src="static/knight/js/basic.js"></script>
+
+<script>
+
+    $(document).ready(function(){
+
+        $.ajax({
+            type:"post",
+            url:"/note/generateNote",
+            success:function(result){
+                console.log("suc");
+            }
+        })
+
+    });
+
+</script>
 </body>
 </html>
