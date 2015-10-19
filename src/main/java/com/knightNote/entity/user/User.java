@@ -1,6 +1,7 @@
-package com.knight.entity.user;
+package com.knightNote.entity.user;
 
 import org.hibernate.envers.Audited;
+import org.hibernate.envers.RelationTargetAuditMode;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import javax.persistence.Entity;
@@ -10,11 +11,11 @@ import javax.persistence.Table;
 
 /**
  * 用户
- * Created by knight on 15/10/9.
+ * Created by knightNote on 15/10/9.
  */
 @Entity
 @Table(name = "user_basic")
-@Audited
+@Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
 public class User extends AbstractPersistable<Long> {
 
     private String account;

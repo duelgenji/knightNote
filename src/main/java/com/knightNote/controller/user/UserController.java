@@ -1,9 +1,9 @@
-package com.knight.controller.user;
+package com.knightNote.controller.user;
 
-import com.knight.entity.user.User;
-import com.knight.entity.user.UserSettings;
-import com.knight.repository.user.UserRepository;
-import com.knight.repository.user.UserSettingsRepository;
+import com.knightNote.entity.user.User;
+import com.knightNote.entity.user.UserSettings;
+import com.knightNote.repository.user.UserRepository;
+import com.knightNote.repository.user.UserSettingsRepository;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,9 +14,10 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 /**
- * Created by knight on 15/10/9.
+ * Created by knightNote on 15/10/9.
  */
 @RestController
 @RequestMapping("user")
@@ -50,6 +51,7 @@ public class UserController {
         if (userRepository.findAll(filters).size()>0) {
             res.put("success",0);
             res.put("message","账户名存在~请换一个试试吧!");
+            return res;
         }else{
             User user = new User();
             user.setAccount(account);
@@ -86,10 +88,9 @@ public class UserController {
         user = userRepository.findByAccountAndPasswordAndRemoved(account, DigestUtils.md5Hex(password), false);
 
         if(user!=null){
-            user.setAccessToken("randomString");
-            user.setAccessTime(new Date().getTime() + 1000000);
+            user.setAccessToken(UUID.randomUUID().toString());
+            user.setAccessTime(new Date().getTime() + (long) 365 * 24 * 60 * 60 * 1000);
             userRepository.save(user);
-
             res.put("accessToken", user.getAccessToken());
         }else{
             res.put("success",0);

@@ -1,13 +1,13 @@
-package com.knight.entity.note;
+package com.knightNote.entity.note;
 
-import com.knight.entity.user.User;
+import com.knightNote.entity.user.User;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import javax.persistence.*;
 import java.util.Date;
 
 /**
- * Created by knight on 15/10/9.
+ * Created by knightNote on 15/10/9.
  */
 @Entity
 public class Note extends AbstractPersistable<Long> {

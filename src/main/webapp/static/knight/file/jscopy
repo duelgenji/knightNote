@@ -1,0 +1,37 @@
+// button which we are attaching the event to
+var button = ...;
+// input containing the text we want to copy
+var input = ...;
+
+button.addEventListener("click", function(event) {
+  event.preventDefault();
+  input.select(); // Select the input node's contents
+  var succeeded;
+  try {
+    // Copy it to the clipboard
+    succeeded = document.execCommand("copy");
+  } catch (e) {
+    succeeded = false;
+  }
+  if (succeeded) {
+    // The copy was successful!
+  } else {
+    // The copy failed :(
+  }
+});
+
+
+
+
+var supported = document.queryCommandSupported("copy");
+if (supported) {
+  // Check that the browser isn't Firefox pre-41
+  try {
+    document.execCommand("copy");
+  } catch (e) {
+    supported = false;
+  }
+}
+if (!supported) {
+  // Fall back to an alternate approach like ZeroClipboard
+}

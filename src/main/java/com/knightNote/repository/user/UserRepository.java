@@ -1,15 +1,17 @@
-package com.knight.repository.user;
+package com.knightNote.repository.user;
 
-import com.knight.entity.user.User;
+import com.knightNote.entity.user.User;
 import com.wonders.xlab.framework.repository.MyRepository;
 
 /**
- * Created by knight on 15/10/9.
+ * Created by knightNote on 15/10/9.
  */
 public interface UserRepository extends MyRepository<User, Long> {
 
     User findByAccount(String account);
 
     User findByAccountAndPasswordAndRemoved(String account,String password,boolean isRemoved);
+
+    User findByAccessToken(String accessToken);
 
 }

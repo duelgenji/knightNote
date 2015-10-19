@@ -1,11 +1,11 @@
-package com.knight.entity.note;
+package com.knightNote.entity.note;
 
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import javax.persistence.Entity;
 
 /**
- * Created by knight on 15/10/15.
+ * Created by knightNote on 15/10/15.
  */
 @Entity
 public class NoteTag extends AbstractPersistable<Long> {

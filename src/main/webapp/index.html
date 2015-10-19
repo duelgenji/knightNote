@@ -3,10 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Hello Knight!</title>
+    <style>
+        body{
+            font-size: 12px;
+        }
+    </style>
 </head>
 <body>
+<p> Step.1 </p>
 
-<p> its first step </p>
+<div>
+    <label for="account">账号</label><input type="text" id="account" />
+</div>
+<div>
+    <label for="password">密码</label><input type="password" id="password"/>
+</div>
+<button id="register">注册</button><button id="login">登陆</button>
 
 
 <script src="static/knight/js/jquery-2.1.4.min.js"></script>
@@ -16,13 +28,31 @@
 
     $(document).ready(function(){
 
-        $.ajax({
-            type:"post",
-            url:"/note/generateNote",
-            success:function(result){
-                console.log("suc");
-            }
-        })
+
+
+        $("#register").on("click",function(){
+
+            var json = {};
+            json.account = $("#account").val();
+            json.password = $("#password").val();
+
+            postRequest("/user/register",json,function(result){
+                if(result.success){
+                }else{
+                }
+            });
+
+        });
+
+
+
+//        $.ajax({
+//            type:"post",
+//            url:"/note/generateNote",
+//            success:function(result){
+//                console.log("suc");
+//            }
+//        });
 
     });
 
