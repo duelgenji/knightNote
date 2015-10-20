@@ -1,0 +1,5 @@
+不论 ajax type 是post 还是get
+controller层  method 是post 还是get
+如果请求体里和url上都有 参数 比如 content=get          {content:post}
+
+最终在controller层都会获得  println(content)的结果是   "get,post"

@@ -12,6 +12,8 @@
 <body>
 <p> Step.1 </p>
 
+<div><span>状态栏：</span><span id="status">等待...</span></div>
+
 <div>
     <label for="account">账号</label><input type="text" id="account" />
 </div>
@@ -19,6 +21,11 @@
     <label for="password">密码</label><input type="password" id="password"/>
 </div>
 <button id="register">注册</button><button id="login">登陆</button>
+
+<div>
+    <label for="noteContent">正文</label><textarea id="noteContent"></textarea>
+    <button id="createNote">提交note</button>
+</div>
 
 
 <script src="static/knight/js/jquery-2.1.4.min.js"></script>
@@ -29,7 +36,9 @@
     $(document).ready(function(){
 
 
-
+        /**
+         * register
+         */
         $("#register").on("click",function(){
 
             var json = {};
@@ -38,13 +47,50 @@
 
             postRequest("/user/register",json,function(result){
                 if(result.success){
+                    $("#status").html("注册成功");
                 }else{
+                    $("#status").html("注册失败:"+result.message);
+                }
+            });
+
+        });
+
+        /**
+         * login
+         */
+        $("#login").on("click",function(){
+
+            var json = {};
+            json.account = $("#account").val();
+            json.password = $("#password").val();
+
+            postRequest("/user/login",json,function(result){
+                if(result.success){
+                    $("#status").html("登陆成功:"+"token"+result.accessToken);
+                    localStorage.accessToken = result.accessToken;
+                }else{
+                    $("#status").html("登陆失败:"+result.message);
                 }
             });
 
         });
 
 
+        /**
+         * create a note
+         */
+        $("#createNote").on("click",function(){
+
+            var json = {};
+            json.content = $("#noteContent").val();
+
+            postRequest("/note/generateNote",json,function(result){
+                if(result.success){
+                }else{
+                }
+            });
+
+        });
 
 //        $.ajax({
 //            type:"post",

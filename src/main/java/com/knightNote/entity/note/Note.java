@@ -28,6 +28,8 @@ public class Note extends AbstractPersistable<Long> {
     @JoinColumn
     private User user;
 
+    private boolean removed;
+
     public String getTitle() {
         return title;
     }
@@ -66,5 +68,13 @@ public class Note extends AbstractPersistable<Long> {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public boolean isRemoved() {
+        return removed;
+    }
+
+    public void setRemoved(boolean removed) {
+        this.removed = removed;
     }
 }

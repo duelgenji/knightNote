@@ -4,9 +4,7 @@ import com.knightNote.entity.user.User;
 import com.knightNote.repository.note.NoteRepository;
 import com.knightNote.repository.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
@@ -30,14 +28,14 @@ public class NoteController {
 
     @RequestMapping(value = "generateNote")
     public Map<String, Object> generateNote(
-            @RequestHeader(required = false) String accessToken,
-            HttpServletRequest request) {
+            @RequestParam String content,
+            @RequestHeader(required = false) String accessToken) {
 
         Map<String, Object> res = new HashMap<>();
 
+        System.out.println(content);
 //        User user =userRepository.findByAccessToken(accessToken);
 
-        System.out.println(UUID.randomUUID().toString());
         return res;
     }
 
