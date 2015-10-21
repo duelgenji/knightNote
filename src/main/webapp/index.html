@@ -85,7 +85,9 @@
             json.content = $("#noteContent").val();
 
             postRequest("/note/generateNote",json,function(result){
+                console.log(result);
                 if(result.success){
+
                 }else{
                 }
             });

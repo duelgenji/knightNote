@@ -18,9 +18,9 @@ public class Note extends AbstractPersistable<Long> {
     private String content;
 
     @Temporal(TemporalType.TIMESTAMP)
-    private Date createDate;
+    private Date createDate = new Date();
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn
     private NoteTag noteTag;
 
