@@ -7,6 +7,7 @@ import com.knightNote.repository.user.UserSettingsRepository;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -93,15 +94,37 @@ public class UserController {
             userRepository.save(user);
             res.put("accessToken", user.getAccessToken());
         }else{
-            res.put("success",0);
-            res.put("message","账号密码错误");
+            res.put("success", 0);
+            res.put("message", "账号密码错误");
             return res;
         }
+
 
         res.put("success",1);
         return res;
     }
 
+
+    /**
+     * 登出
+     */
+    @RequestMapping("logout")
+    public Map<String ,Object> logout(
+            @RequestHeader String accessToken){
+
+        Map<String, Object> res = new HashMap<>();
+
+        User user = userRepository.findByAccessToken(accessToken);
+
+        if(user!=null){
+            user.setAccessToken("");
+            user.setAccessTime(0);
+            userRepository.save(user);
+        }
+
+        res.put("success",1);
+        return res;
+    }
 
 }
 

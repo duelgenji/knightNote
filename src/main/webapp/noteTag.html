@@ -12,8 +12,9 @@
 <div id="square">
 
 </div>
-<button id="my">我的</button>
-<button id="more">更多</button>
+<input type="text" id="tag"/>
+<button id="add">+</button>
+<button id="remove">-</button>
 
 </body>
 <script src="static/knight/js/jquery-2.1.4.min.js"></script>
@@ -29,23 +30,19 @@
             for (var i = 0; i < data.length; i++) {
                 var obj = data[i];
                 /** @namespace obj.createDate */
-                $square.append('<p>'+obj.content+'-'+obj.createDate+'</p>');
+                $square.append('<p>'+obj.id+"."+obj.content+'-'+obj.createDate+'</p>');
             }
 
         }
 
-        $("#my").on("click",function(){
-            postRequest("/note/retrieveMyNoteList",null,function(result){
-                if(result.success){
-                    loadContent(result.list)
-                }else{
-                }
-            });
+        $("#add").on("click", function () {
+
+            var tag = $("#tag").val();
+
         });
 
 
-
-        postRequest("/note/noteSquare",null,function(result){
+        postRequest("/noteTag/retrieveList",null,function(result){
             console.log(result);
             if(result.success){
                 /** @namespace result.list */

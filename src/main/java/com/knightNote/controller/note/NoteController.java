@@ -56,8 +56,39 @@ public class NoteController {
         return res;
     }
 
+
+
+    @RequestMapping(value = "retrieveMyNoteList")
+    public Map<String, Object> retrieveMyNoteList(
+            @PageableDefault(page = 0, size = 20,sort = "createDate", direction = Sort.Direction.DESC) Pageable pageable,
+            @RequestHeader String accessToken) {
+
+        Map<String, Object> res = new HashMap<>();
+
+        User user = userRepository.findByAccessToken(accessToken);
+
+        if(user==null){
+            res.put("success",0);
+            res.put("message","请先登录");
+            res.put("error","000");
+            return res;
+        }
+
+        Map<String, Object> filters = new HashMap<>();
+
+        filters.put("removed_equal", 0);
+        filters.put("user_equal", user);
+        Page<Note> noteList = noteRepository.findAll(filters,pageable);
+
+        res.put("list",noteList.getContent());
+        res.put("success", 1);
+
+
+        return res;
+    }
+
     @RequestMapping(value="noteSquare")
-    private Map<String, Object> noteSquare(
+    public Map<String, Object> noteSquare(
             @PageableDefault(page = 0, size = 20,sort = "createDate", direction = Sort.Direction.DESC) Pageable pageable){
 
         Map<String, Object> res = new HashMap<>();
