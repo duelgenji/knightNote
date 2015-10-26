@@ -26,6 +26,7 @@
 
 
 <a href="square.html">进入广场</a>
+<a href="manor.html">私人庄园</a>
 <a href="noteTag.html">标签管理</a>
 
 <script src="static/knight/js/jquery-2.1.4.min.js"></script>
@@ -100,6 +101,7 @@
             postRequest("/note/generateNote",json,function(result){
                 console.log(result);
                 if(result.success){
+                    $("#status").html("发表成功！");
                 }else{
                 }
             });

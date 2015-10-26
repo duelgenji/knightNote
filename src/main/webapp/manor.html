@@ -33,27 +33,13 @@
 
         }
 
-        $("#my").on("click",function(){
-            postRequest("/note/retrieveMyNoteList",null,function(result){
-                if(result.success){
-                    loadContent(result.list)
-                }else{
-                }
-            });
-        });
 
-
-
-        postRequest("/note/noteSquare",null,function(result){
-            console.log(result);
+        postRequest("/note/retrieveMyNoteList",null,function(result){
             if(result.success){
-                /** @namespace result.list */
                 loadContent(result.list)
             }else{
             }
         });
-
-
     });
 
 </script>

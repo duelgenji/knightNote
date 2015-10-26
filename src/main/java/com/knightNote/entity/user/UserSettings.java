@@ -11,7 +11,6 @@ import javax.persistence.*;
  */
 @Entity
 @Table
-
 public class UserSettings extends AbstractPersistable<Long> {
 
 
