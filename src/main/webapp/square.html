@@ -27,7 +27,6 @@
             $square.empty();
             for (var i = 0; i < data.length; i++) {
                 var obj = data[i];
-                /** @namespace obj.createDate */
                 $square.append('<p>'+obj.content+'-'+obj.createDate+'</p>');
             }
 
@@ -47,7 +46,6 @@
         postRequest("/note/noteSquare",null,function(result){
             console.log(result);
             if(result.success){
-                /** @namespace result.list */
                 loadContent(result.list)
             }else{
             }

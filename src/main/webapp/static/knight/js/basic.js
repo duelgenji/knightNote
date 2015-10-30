@@ -1,6 +1,7 @@
 /**
  * Created by knight on 15/10/16.
  */
+/** @namespace obj.createDate */
 
 
 $.ajaxSetup({

@@ -7,13 +7,13 @@
     <link href="static/knight/css/basic.css" rel="stylesheet"/>
 </head>
 <body>
-<a href="index.html">首页</a>
+<button id="back">返回</button>
 
-<div id="square">
+<div>
+    <label for="noteContent">正文</label><textarea id="noteContent"></textarea>
 
+    <button id="createNote">提交note</button>
 </div>
-<button id="more">更多</button>
-
 </body>
 <script src="static/knight/js/jquery-2.1.4.min.js"></script>
 <script src="static/knight/js/basic.js"></script>
@@ -23,27 +23,25 @@
     $(document).ready(function(){
 
         function loadContent(data){
-            var $square = $("#square");
-            $square.empty();
-            for (var i = 0; i < data.length; i++) {
-                var obj = data[i];
-                $square.append('<p class="note" data-key="'+obj.id+'">'+obj.content+'-'+obj.createDate+'</p>');
-            }
+
 
         }
 
-        $(document).on("click", ".note", function () {
-            var key = $(this).data("key");
-            self.location="noteTrim.html?key="+key;
+        $("#back").on("click",function(){
+            history.go(-1);
         });
 
 
-        postRequest("/note/retrieveMyNoteList",null,function(result){
+
+        postRequest("/note/noteSquare",null,function(result){
+            console.log(result);
             if(result.success){
                 loadContent(result.list)
             }else{
             }
         });
+
+
     });
 
 </script>
