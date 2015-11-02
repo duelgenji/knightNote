@@ -43,7 +43,8 @@
             postRequest("/noteTag/generateTag",json,function(result){
                 console.log(result);
                 if(result.success){
-                    alert("Yeah!")
+                    alert("Yeah!");
+                    location.reload();
                 }else{
                 }
             });
