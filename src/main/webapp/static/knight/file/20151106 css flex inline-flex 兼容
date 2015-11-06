@@ -1,0 +1,6 @@
+除了 Safari，其他所有主流浏览器都支持 flex 属性。
+所以不要用flex   用width 百分比
+
+display : inline-flex;
+ 内部元素 如果是30%  70%  正好占100%时   不能使用margin，  safari 会认为是 额外的 宽度 会导致 70%（后面）的部分换行
+ 请使用padding
