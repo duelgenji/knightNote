@@ -10,7 +10,7 @@
 
 <script src="static/knight/js/jquery-2.1.4.min.js"></script>
 <script src="static/highcharts/js/highcharts.src.js"></script>
-<script src="static/highcharts/js/highcharts-more.src.js"></script>
+<!--<script src="static/highcharts/js/highcharts-more.src.js"></script>-->
 <script>
     $(function () {
         $('#container').highcharts({
@@ -90,20 +90,22 @@
             }, {
                 name: '低压',
                 data: [[0,60],[3,75],[6,66]]
-            }, {
-                name: '高区间',
-                type: 'arearange',
-                color: '#72C4FF ',
-                zIndex: -1,
-                data: [[2,110,110],[3,110,105],[6,110,105]]
-            }, {
-                name: '低区间',
-                type: 'arearange',
-                lineWidth: 0,
-                color: '#FDA61E',
-                zIndex: -1,
-                data: [[2,70,70],[3,70,75],[4.5,70,70]]
-            }]
+            }
+//                , {
+//                name: '高区间',
+//                type: 'arearange',
+//                color: '#72C4FF ',
+//                zIndex: -1,
+//                data: [[2,110,110],[3,110,105],[6,110,105]]
+//            }, {
+//                name: '低区间',
+//                type: 'arearange',
+//                lineWidth: 0,
+//                color: '#FDA61E',
+//                zIndex: -1,
+//                data: [[2,70,70],[3,70,75],[4.5,70,70]]
+//            }
+            ]
         });
     });
 </script>

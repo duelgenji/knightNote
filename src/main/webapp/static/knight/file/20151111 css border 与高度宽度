@@ -1,0 +1,3 @@
+如不定义height
+chrome : border + 内容 = height
+safari : height = 内容  border会额外算上 高度宽度 影响排版  所以要定义 height width 再border

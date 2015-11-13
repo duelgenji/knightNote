@@ -1,0 +1,14 @@
+官网：https://nodejs.org
+下载最新stable 5.0.0 pkg  双击安装
+
+
+结果输出：
+Node.js was installed at
+
+   /usr/local/bin/node
+
+npm was installed at
+
+   /usr/local/bin/npm
+
+Make sure that /usr/local/bin is in your $PATH.

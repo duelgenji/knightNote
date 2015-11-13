@@ -1,0 +1,7 @@
+安装
+~  sudo npm install --global gulp
+Password:
+/usr/local/bin/gulp -> /usr/local/lib/node_modules/gulp/bin/gulp.js
+/usr/local/lib
+
+
