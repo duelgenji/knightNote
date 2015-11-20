@@ -1,0 +1,18 @@
+public interface UniversityRepository extends MyRepository<University, Long> {
+
+    List<University> findByTitleOrTitleEn(String title,String titleEn);
+
+    @Modifying
+    @Query(value = " delete from University where id in (:ids) ")
+    int removeByIds(@Param(value = "ids") List<Long> ids);
+
+    @Modifying
+    @Query(value = " delete from University where title in (:titles) ")
+    int removeByTitles(@Param(value = "titles") List<String> titles);
+}
+
+
+1. 必须加 @Modifying 注解 才能执行 修改
+2. 不一定需要根据id 删除
+3. 返回是void  int /Integer 类型  返回值是修改条数
+4. controller层 也必须加@Transactional

@@ -1,0 +1,2 @@
+jquery 设置checkbox 值  选中取消时 要使用 prop
+attr的话  第二次调用会产生无效的问题
