@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+        body{
+            /*font-size: large;*/
+            font-size: 20px;
+        }
+
+        .d1{
+            font-size: 2rem;
+        }
+        .d2{
+            font-size: 2em;
+        }
+        .d3{
+            font-size: 20px;
+        }
+
+        .d4{
+            height: 10rem;
+            width: 100%;
+            background-color: navajowhite;
+        }
+        .d5{
+            height: 10em;
+            width: 100%;
+            background-color: saddlebrown;
+        }
+        .d6{
+            height: 200px;
+            width: 100%;
+            background-color: blueviolet;
+        }
+
+
+        #refresh{
+            padding: 20px 50px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="d1">aaaa1111</div>
+
+<div class="d2">bbbb2222</div>
+
+<div class="d3">cccc3333</div>
+
+<div class="d4"></div>
+
+<div class="d5"></div>
+
+<div class="d6"></div>
+<button id="refresh">f5</button>
+
+<div>
+    总结：em基于 body的size 值   rem基于浏览器的默认size值（已调节浏览器来实践）;px 是绝对的没什么好说;
+    微信中的浏览器 可以调节字体大小 其实就是改变浏览器的默认size值 如果页面里本身有 px的值 也会等比放大
+    比如 默认16px的 时候 字体大小是20》浏览器默认改为24px， 原来20px的 会变为 20*(24/16)=30px。
+</div>
+
+<script src="../static/knight/js/jquery-2.1.4.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $("#refresh").on("click",function(){
+            location.reload();
+        });
+
+        $(".d4").html($(".d4").height());
+        $(".d5").html($(".d5").height());
+        $(".d6").html($(".d6").height());
+    });
+</script>
+</body>
+</html>
