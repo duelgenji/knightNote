@@ -1,0 +1,16 @@
+
+Table 1. Request parameters evaluated for Pageable instances
+page
+Page you want to retrieve, 0 indexed and defaults to 0.
+size
+Size of the page you want to retrieve, defaults to 20.
+sort
+Properties that should be sorted by in the format property,property(,ASC|DESC). Default sort direction is ascending. Use multiple sort parameters if you want to switch directions, e.g. ?sort=firstname&sort=lastname,asc.
+
+
+page 页数 size 每页大小
+
+sort 排序   排序字段+(,desc|asc)
+可以多个排序  用
+1 get 方式  sort=aaa,asc&sorc=bbb,desc ;
+2 表单形式   [{ name :"sort" ,value:"aaa,asc" } ,{ name :"sort" ,value:"bbb,desc" } ]
