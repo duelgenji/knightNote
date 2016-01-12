@@ -1,0 +1,8 @@
+
+mysql 如果本地的 要该my.ini 配置 utf8mb4
+然后创建数据 库 表 字段 的时候也是utf8mb4
+
+
+rds  要改整个实例的参数设置 character_set_server  utf8mb4
+然后重启实例
+单单新建数据库 utf8mb4是没用的
