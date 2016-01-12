@@ -1,0 +1,28 @@
+mac 上安装 brew install redis
+ubuntu 安装  apt-get install redis-server
+
+
+连到本机:
+redis-cli
+
+
+终端连到外部地址：
+redis-cli -h 10.1.64.181 --raw
+redis-cli -h 172.16.74.7 --raw
+
+查看Key value 键值对
+
+全部： KEYS *
+查看制定前缀：   KEYS youle:moment:hash*
+
+redis 目录 (ubuntu):
+/run/redis
+/var/log/redis
+/var/lib/redis
+/etc/redis
+
+修改/etc/redis/redis.conf
+
+端口127.0.0.1 改为0.0.0.0
+
+

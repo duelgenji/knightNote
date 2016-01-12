@@ -14,3 +14,10 @@ sort 排序   排序字段+(,desc|asc)
 可以多个排序  用
 1 get 方式  sort=aaa,asc&sorc=bbb,desc ;
 2 表单形式   [{ name :"sort" ,value:"aaa,asc" } ,{ name :"sort" ,value:"bbb,desc" } ]
+
+
+
+Sort 直接在repository的方法里 使用sort  ，多条件排序
+
+  Sort sort = new Sort(Sort.Direction.DESC, "createdDate").and(new Sort(Sort.Direction.DESC, "id"));
+  quizDetailRepository.findFirstByQuiz(q, sort);
