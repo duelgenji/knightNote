@@ -1,0 +1,44 @@
+windows 7   example 华申
+
+1. 官网 download
+nginx 1.9.9  zip
+tomcat 7.0.67 zip
+
+位置
+D:\nginx-1.9.9
+
+环境变量  Path 添加  D:\nginx-1.9.9\
+
+cd 到目录 再执行命令
+基本命令
+启动  start nginx
+关闭  nginx -s stop
+
+2. 安装 tomcat  （首先得有java)
+并配置JAVA_HOME
+PATH里增加 %JAVA_HOME%/bin
+
+4.tomcat start
+
+5. 修改 IIS 的端口 重新启动（很快）
+80改为了8115
+
+6. nginx/conf
+
+基础版  只修改 转端口
+这里因为iis 绑定的是ip  所以我也只能设置ip 而非localhost or 127.0.0.1
+
+        location / {
+            proxy_pass   http://139.196.47.61:8115;
+	    index index.html;
+        }
+
+        location /wap/ {
+            proxy_pass   http://127.0.0.1:8080/;
+	    index index.html;
+        }
+
+
+7 .todo
+地址路径问题
+可以页面和 java应用分开
