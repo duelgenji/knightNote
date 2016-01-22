@@ -1,0 +1,74 @@
+package com.wonders.xlab.youle.util;
+
+import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.commons.lang3.time.DateFormatUtils;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+
+import java.util.*;
+
+/**
+ * 容联云通讯 工具类  用于电话回拨
+ * Created by knight on 16/1/21.
+ */
+@Service
+public class CcpUtils {
+
+    //@Autowired
+    //private RestTemplate restTemplate;
+
+    private static String CCP_URL = "https://sandboxapp.cloopen.com:8883/2013-12-26/SubAccounts/";
+
+    private static String SUB_ACCOUNT_ID = "852f0cf9bd9311e59288ac853d9f54f2";
+
+    private static String SUB_ACCOUNT_KEY = "fda696a931330ab9425dea4a41bce3e2";
+
+
+    public static void main(String[] args) {
+
+        RestTemplate restTemplate = new RestTemplate();
+
+        String now = DateFormatUtils.format(new Date(), "yyyyMMddHHmmss");
+        String sig = DigestUtils.md5Hex(SUB_ACCOUNT_ID + SUB_ACCOUNT_KEY + now);
+
+        Base64 base64 = new Base64();
+        String authorization = new String(base64.encode((SUB_ACCOUNT_ID + ":" + now).getBytes()));
+
+
+        HttpHeaders headers = new HttpHeaders();
+//        MediaType type = MediaType.parseMediaType("application/json;charset=utf-8");
+        List<MediaType> mediaTypeList = new ArrayList<>();
+        mediaTypeList.add(MediaType.APPLICATION_JSON);
+        headers.setAccept(mediaTypeList);
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        headers.add("Authorization", authorization);
+        System.out.println(authorization);
+
+        Map<String, String> map = new HashMap<String, String>();
+        map.put("from", "13774322959");
+        map.put("to", "13774296561");
+
+        HttpEntity<Map<String, String>> request = new HttpEntity<>(map, headers);
+
+
+        String result = restTemplate.postForObject(CCP_URL + SUB_ACCOUNT_ID + "/Calls/Callback?sig="+sig, request, String.class);
+        System.out.println(result);
+
+        try {
+            JSONObject obj = new JSONObject(result);
+            String statusCode =  obj.getString("statusCode");
+            if(statusCode.equals("000000")){
+                System.out.println("发送成功");
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+}
