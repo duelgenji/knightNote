@@ -1,0 +1,10 @@
+java 中获取字符长度不是中文2字节
+
+str.getBytes("gbk").length;
+
+要根据编码 gbk时  1个中文算2  表情算2
+utf8   1个中文算3    1个表情4
+str本身length   都是1
+
+
+mysql 数据库中 varchar  不管什么 中英文表情 每个也都算1
