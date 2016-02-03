@@ -64,7 +64,7 @@
 <div id="sout"></div>
 <div class="container">
     <div class="ui menus">
-        <div class="menu">
+        <div class="menu" data-progression="0">
             <div class="menu-wrap">
                 <a class="ui red ribbon label">俯卧撑</a>
                 <div class="content">
@@ -84,10 +84,10 @@
                 </div>
             </div>
         </div>
-        <div class="menu">
+        <div class="menu" data-progression="1">
             <div class="menu-wrap">
                 <div class="content">
-                    <a class="ui orange ribbon label">俯卧撑</a>
+                    <a class="ui orange ribbon label">深蹲</a>
                     <div class="meta">
                         墙壁俯卧撑
                     </div>
@@ -103,10 +103,10 @@
                 </div>
             </div>
         </div>
-        <div class="menu">
+        <div class="menu" data-progression="2">
             <div class="menu-wrap">
                 <div class="content">
-                    <a class="ui blue ribbon label">俯卧撑</a>
+                    <a class="ui blue ribbon label">引体向上</a>
                     <div class="meta">
                         墙壁俯卧撑
                     </div>
@@ -122,10 +122,10 @@
                 </div>
             </div>
         </div>
-        <div class="menu">
+        <div class="menu" data-progression="3">
             <div class="menu-wrap">
                 <div class="content">
-                    <a class="ui teal ribbon label">俯卧撑</a>
+                    <a class="ui teal ribbon label">举腿</a>
 
                     <div class="meta">
                         墙壁俯卧撑
@@ -142,10 +142,10 @@
                 </div>
             </div>
         </div>
-        <div class="menu">
+        <div class="menu" data-progression="4">
             <div class="menu-wrap">
                 <div class="content">
-                    <a class="ui violet ribbon label">俯卧撑</a>
+                    <a class="ui violet ribbon label">桥</a>
 
                     <div class="meta">
                         墙壁俯卧撑
@@ -162,10 +162,10 @@
                 </div>
             </div>
         </div>
-        <div class="menu">
+        <div class="menu" data-progression="5">
             <div class="menu-wrap">
                 <div class="content">
-                    <a class="ui green ribbon label">俯卧撑</a>
+                    <a class="ui green ribbon label">倒立撑</a>
 
                     <div class="meta">
                         墙壁俯卧撑
@@ -185,7 +185,59 @@
 
     </div>
 
+    <div class="ui modal">
+        <i class="close icon"></i>
+        <div class="header">
+
+        </div>
+        <div class="content">
+            <div class="description">
+                A description can appear on the right
+            </div>
+        </div>
+
+    </div>
 </div>
+
+<div class="ui vertical accordion menu">
+    <div class="item">
+        <a class="active title">
+            <i class="dropdown icon"></i>
+            Size
+        </a>
+        <div class="active content">
+            <div class="ui form">
+                <div class="grouped fields">
+                    <div class="field">
+                        <div class="ui radio checkbox">
+                            <input type="radio" name="size" value="small">
+                            <label>Small</label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui radio checkbox">
+                            <input type="radio" name="size" value="medium">
+                            <label>Medium</label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui radio checkbox">
+                            <input type="radio" name="size" value="large">
+                            <label>Large</label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui radio checkbox">
+                            <input type="radio" name="size" value="x-large">
+                            <label>X-Large</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 </body>
 <script src="static/knight/js/jquery-2.1.4.min.js"></script>
@@ -193,6 +245,22 @@
 <script>
     $(document).ready(function(){
         $("#sout").html(navigator.userAgent);
+        var aList = [];
+
+        //加载 囚徒健身列表
+        $.get("static/knight/js/convictCondition.txt",function(data){
+            var list = data.split("#");
+            for(var i in list){
+                var t = list[i].split("\n");
+                t.pop();
+                aList.push(t);
+            }
+        });
+        $(".menu").on("click",function(){
+            $(".ui.modal").modal("show");
+        });
+
+
 
     });
 </script>
