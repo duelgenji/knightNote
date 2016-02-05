@@ -187,65 +187,46 @@
 
     <div class="ui modal">
         <i class="close icon"></i>
-        <div class="header">
+        <div id="modal_header" class="header">
 
         </div>
-        <div class="content">
-            <div class="description">
-                A description can appear on the right
-            </div>
-        </div>
-
-    </div>
-</div>
-
-<div class="ui vertical accordion menu">
-    <div class="item">
-        <a class="active title">
-            <i class="dropdown icon"></i>
-            Size
-        </a>
-        <div class="active content">
-            <div class="ui form">
-                <div class="grouped fields">
-                    <div class="field">
-                        <div class="ui radio checkbox">
-                            <input type="radio" name="size" value="small">
-                            <label>Small</label>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <div class="ui radio checkbox">
-                            <input type="radio" name="size" value="medium">
-                            <label>Medium</label>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <div class="ui radio checkbox">
-                            <input type="radio" name="size" value="large">
-                            <label>Large</label>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <div class="ui radio checkbox">
-                            <input type="radio" name="size" value="x-large">
-                            <label>X-Large</label>
+        <div id="modal_content" class="content">
+            <div class="ui vertical accordion menu">
+                <div class="item"><a class="title"><i class="dropdown icon"></i></a>
+                    <div class=" content">
+                        <div class="ui form">
+                            <div class="grouped fields">
+                                <div class="field">
+                                    <div class="ui radio checkbox">
+                                        <input type="radio" name="size" value="small">
+                                        <label>Small</label>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+
         </div>
+
     </div>
 </div>
+
 
 
 </body>
 <script src="static/knight/js/jquery-2.1.4.min.js"></script>
 <script src="static/semantic/semantic.js"></script>
 <script>
+    var aProgression = ["俯卧撑","深蹲","引体向上","举腿","桥","倒立撑"];
+    var aLevel = ["自定义","初级标准","中级标准","高级标准"];
+    var aList = [];
+
     $(document).ready(function(){
         $("#sout").html(navigator.userAgent);
-        var aList = [];
+
 
         //加载 囚徒健身列表
         $.get("static/knight/js/convictCondition.txt",function(data){
@@ -256,12 +237,47 @@
                 aList.push(t);
             }
         });
-        $(".menu").on("click",function(){
+        $(".menus .menu").on("click",function(){
             $(".ui.modal").modal("show");
+            updateAccordion($(this).data("progression"));
+
         });
-
-
-
     });
+
+    function updateAccordion(index){
+
+        $("#modal_header").html(aProgression[index]);
+
+        var fieldHtml = '<div class="field"><div class="ui radio checkbox"><input type="radio" name="size" value="small"><label>Small</label></div></div>';
+
+        var progression = aList[index];
+
+        var itemHtml = '';
+
+        var aDetail;
+
+        for(var i = 0;i< progression.length;i++){
+
+            aDetail = progression[i].split(" ");
+            console.log(aDetail);
+            fieldHtml = '';
+            for(var j = 1;j<aDetail.length;j++){
+                fieldHtml += '<div class="field"><div class="ui radio checkbox"><input type="radio" name="level" value=""><label>Small</label></div></div>'
+            }
+
+            itemHtml = '<div class="item"><a class="title"><i class="dropdown icon"></i>'+aDetail[0]+'</a><div class=" content"><div class="ui form"><div class="grouped fields">'+fieldHtml+'</div></div></div></div>';
+
+        }
+
+        var accordionHtml = '<div class="ui vertical accordion menu">'+itemHtml+'</div>';
+
+
+
+        $('.ui.accordion').accordion();
+
+
+
+
+    }
 </script>
 </html>
