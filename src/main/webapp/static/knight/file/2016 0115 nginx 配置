@@ -42,3 +42,6 @@ PATH里增加 %JAVA_HOME%/bin
 7 .todo
 地址路径问题
 可以页面和 java应用分开
+
+
+ps: 有时候conf 不起效 是因为进程中有 nginx.exe  结束之
