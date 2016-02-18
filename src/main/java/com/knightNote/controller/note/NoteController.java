@@ -1,6 +1,7 @@
 package com.knightNote.controller.note;
 
 import com.knightNote.entity.note.Note;
+import com.knightNote.entity.note.NoteTag;
 import com.knightNote.entity.user.User;
 import com.knightNote.repository.note.NoteRepository;
 import com.knightNote.repository.user.UserRepository;
@@ -80,7 +81,7 @@ public class NoteController {
         filters.put("user_equal", user);
         Page<Note> noteList = noteRepository.findAll(filters,pageable);
 
-        res.put("list",noteList.getContent());
+        res.put("list", noteList.getContent());
         res.put("success", 1);
 
 
@@ -102,5 +103,4 @@ public class NoteController {
         res.put("success", 1);
         return res;
     }
-
 }

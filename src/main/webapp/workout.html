@@ -192,14 +192,26 @@
         </div>
         <div id="modal_content" class="content">
             <div class="ui vertical accordion menu">
-                <div class="item"><a class="title"><i class="dropdown icon"></i></a>
+                <div class="item"><a class="title"><i class="dropdown icon"></i>aaa</a>
                     <div class=" content">
                         <div class="ui form">
                             <div class="grouped fields">
                                 <div class="field">
                                     <div class="ui radio checkbox">
                                         <input type="radio" name="size" value="small">
-                                        <label>Small</label>
+                                        <label>初级</label>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <div class="ui radio checkbox">
+                                        <input type="radio" name="size" value="small">
+                                        <label>中级</label>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <div class="ui radio checkbox">
+                                        <input type="radio" name="size" value="small">
+                                        <label>高级</label>
                                     </div>
                                 </div>
                             </div>
@@ -238,10 +250,17 @@
             }
         });
         $(".menus .menu").on("click",function(){
-            $(".ui.modal").modal("show");
             updateAccordion($(this).data("progression"));
+            $(".ui.modal").modal("show");
 
         });
+
+        $(document).on("click","#done",function(){
+            console.log($("input[name='level']:checked").data("progression"));
+            console.log($("input[name='level']:checked").data("step"));
+            console.log($("input[name='level']:checked").data("level"));
+        });
+
     });
 
     function updateAccordion(index){
@@ -256,26 +275,32 @@
 
         var aDetail;
 
+//           @RequestParam int progression,
+//            @RequestParam int step,
+//            @RequestParam int level,
+//            @RequestParam int countType,
+//            @RequestParam int count,
+
         for(var i = 0;i< progression.length;i++){
 
             aDetail = progression[i].split(" ");
             console.log(aDetail);
             fieldHtml = '';
             for(var j = 1;j<aDetail.length;j++){
-                fieldHtml += '<div class="field"><div class="ui radio checkbox"><input type="radio" name="level" value=""><label>Small</label></div></div>'
+                fieldHtml += '<div class="field"><div class="ui radio checkbox"><input type="radio" name="level" data-progression="'+index+'" data-step="'+(i+1)+'" data-level="'+j+'" value=""><label>'+aLevel[j]+aDetail[j]+'</label></div></div>'
             }
 
-            itemHtml = '<div class="item"><a class="title"><i class="dropdown icon"></i>'+aDetail[0]+'</a><div class=" content"><div class="ui form"><div class="grouped fields">'+fieldHtml+'</div></div></div></div>';
+            itemHtml+= '<div class="item"><a class="title"><i class="dropdown icon"></i>'+aDetail[0]+'</a><div class="content"><div class="ui form"><div class="grouped fields">'+fieldHtml+'</div></div></div></div>';
 
         }
 
-        var accordionHtml = '<div class="ui vertical accordion menu">'+itemHtml+'</div>';
+        var buttonHtml = '<div style="clear:both;"><button id="done" class="ui green button">完成</button></div>';
 
+        var accordionHtml = '<div class="ui vertical accordion menu" style="margin-bottom: 20px">'+itemHtml+'</div>'+buttonHtml;
 
+        $('#modal_content').empty().append(accordionHtml);
 
-        $('.ui.accordion').accordion();
-
-
+        $(".ui.accordion").accordion();
 
 
     }
