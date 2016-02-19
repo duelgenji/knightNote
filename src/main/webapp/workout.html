@@ -255,10 +255,35 @@
 
         });
 
+        //label input checkbox 点击也有效
+        $(document).on("click",".checkbox label",function(){
+            $(this).parent().find("input").click();
+        });
+
         $(document).on("click","#done",function(){
-            console.log($("input[name='level']:checked").data("progression"));
-            console.log($("input[name='level']:checked").data("step"));
-            console.log($("input[name='level']:checked").data("level"));
+            var $dom = $("input[name='level']:checked");
+
+            if($dom.length<1){
+                alert("选择一项啦");
+                return;
+            }
+
+            var json = {};
+
+            json.progression = $dom.data("progression");
+            json.step = $dom.data("step");
+            json.level = $dom.data("level");
+            var value = $dom.val();
+            var countType = 0;
+            var count = 0 ;
+            if(!value.match("x")){
+                countType = 1;
+                count = value;
+            }else{
+                count = value.split("x")[0];
+            }
+            json.countType = countType;
+            json.count = count;
         });
 
     });
@@ -287,7 +312,7 @@
             console.log(aDetail);
             fieldHtml = '';
             for(var j = 1;j<aDetail.length;j++){
-                fieldHtml += '<div class="field"><div class="ui radio checkbox"><input type="radio" name="level" data-progression="'+index+'" data-step="'+(i+1)+'" data-level="'+j+'" value=""><label>'+aLevel[j]+aDetail[j]+'</label></div></div>'
+                fieldHtml += '<div class="field"><div class="ui radio checkbox"><input type="radio" name="level" data-progression="'+index+'" data-step="'+(i+1)+'" data-level="'+j+'" value="'+aDetail[j]+'"><label>'+aLevel[j]+aDetail[j]+'</label></div></div>'
             }
 
             itemHtml+= '<div class="item"><a class="title"><i class="dropdown icon"></i>'+aDetail[0]+'</a><div class="content"><div class="ui form"><div class="grouped fields">'+fieldHtml+'</div></div></div></div>';
