@@ -11,8 +11,12 @@ $.ajaxSetup({
     beforeSend:function(){
         console.log("ajax before send");
     },
-    complete:function(){
+    complete:function(result){
         console.log("complete");
+        var res = eval("("+result.responseText+")");
+        if(res.success == "0" && res.error =="000"){
+            self.location = "index.html"
+        }
     },
     error:function(xhr,status,error){
         console.log(xhr.status);
@@ -23,7 +27,7 @@ function postRequest(url,data,successFunction){
 
     $.ajax({
         type:"post",
-        headers: {accessToken: localStorage.accessToken},
+        headers: {accessToken: localStorage.accessToken ? localStorage.accessToken:""},
         data:data,
         url:url,
         success:successFunction

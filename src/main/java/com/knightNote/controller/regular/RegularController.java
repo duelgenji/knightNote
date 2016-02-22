@@ -22,7 +22,7 @@ import java.util.Map;
  * Created by Knight on 2015/11/24 23:52.
  */
 @RestController
-@RequestMapping("regular")
+@RequestMapping("regular/")
 public class RegularController {
 
     @Autowired
@@ -44,7 +44,7 @@ public class RegularController {
     ConvictConditionRepository convictConditionRepository;
 
     /**
-     * 囚徒健身  记录
+     * 囚徒健身 生成记录
      */
     @Transactional
     @RequestMapping("generateConvictCondition")
@@ -55,6 +55,7 @@ public class RegularController {
             @RequestParam int level,
             @RequestParam int countType,
             @RequestParam int count,
+            @RequestParam int countGroup,
             @RequestParam(required = false) String remark,
             @RequestHeader String accessToken){
         Map<String, Object> res = new HashMap<>();
@@ -68,20 +69,20 @@ public class RegularController {
             return res;
         }
 
-
         ConvictCondition cc = new ConvictCondition();
         cc.setUser(user);
         cc.setProgression(ConvictCondition.Progression.values()[progression]);
         cc.setStep(step);
         cc.setStepName(stepName);
         cc.setLevel(level);
-        cc.setCount(count);
         cc.setCountType(countType);
+        cc.setCount(count);
+        cc.setCountGroup(countGroup);
         cc.setRemark(remark);
         convictConditionRepository.save(cc);
 
+        res.put("success",1);
         return res;
-
 
     }
 

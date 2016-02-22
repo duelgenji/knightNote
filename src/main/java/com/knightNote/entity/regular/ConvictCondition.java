@@ -54,6 +54,11 @@ public class ConvictCondition extends AbstractBaseEntity<Long> {
 
     private int count;
 
+    /**
+     * 计算 多少组
+     */
+    private int countGroup;
+
     private String remark;
 
     public User getUser() {
@@ -110,6 +115,14 @@ public class ConvictCondition extends AbstractBaseEntity<Long> {
 
     public void setCount(int count) {
         this.count = count;
+    }
+
+    public int getCountGroup() {
+        return countGroup;
+    }
+
+    public void setCountGroup(int countGroup) {
+        this.countGroup = countGroup;
     }
 
     public String getRemark() {

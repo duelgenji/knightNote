@@ -11,7 +11,6 @@ import com.fasterxml.jackson.datatype.hibernate4.Hibernate4Module.Feature;
 import com.fasterxml.jackson.datatype.joda.JodaModule;
 import com.thetransactioncompany.cors.CORSFilter;
 import com.wonders.xlab.framework.repository.MyRepositoryFactoryBean;
-import org.jsondoc.spring.boot.starter.EnableJSONDoc;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -31,7 +30,6 @@ import java.util.HashMap;
 
 @SpringBootApplication
 @EnableJpaAuditing
-@EnableJSONDoc
 @EnableJpaRepositories(
         basePackages = {"${app.basePackages}"},
         repositoryFactoryBeanClass = MyRepositoryFactoryBean.class
@@ -53,7 +51,7 @@ public class Application extends SpringBootServletInitializer {
         HashMap initParameters = new HashMap();
         initParameters.put("cors.allowOrigin", this.corsAllowOrigin);
         initParameters.put("cors.supportedMethods", "GET, POST, HEAD, PUT, DELETE");
-        initParameters.put("cors.supportedHeaders", "Accept, Origin, X-Requested-With, Content-Type, Last-Modified, token ,hctoken");
+        initParameters.put("cors.supportedHeaders", "Accept, Origin, X-Requested-With, Content-Type, Last-Modified, token ,accessToken");
         CORSFilter filter = new CORSFilter();
         FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();
         filterRegistrationBean.setFilter(filter);

@@ -231,6 +231,8 @@
 </body>
 <script src="static/knight/js/jquery-2.1.4.min.js"></script>
 <script src="static/semantic/semantic.js"></script>
+<script src="static/knight/js/basic.js"></script>
+
 <script>
     var aProgression = ["俯卧撑","深蹲","引体向上","举腿","桥","倒立撑"];
     var aLevel = ["自定义","初级标准","中级标准","高级标准"];
@@ -276,14 +278,27 @@
             var value = $dom.val();
             var countType = 0;
             var count = 0 ;
+            var countGroup = 1 ;
             if(!value.match("x")){
                 countType = 1;
-                count = value;
+                countGroup = 1;
+                count = parseInt(value);
             }else{
-                count = value.split("x")[0];
+                countType = 0;
+                countGroup = parseInt(value.split("x")[0]);
+                count = parseInt(value.split("x")[1]);
             }
             json.countType = countType;
             json.count = count;
+            json.countGroup = countGroup;
+
+            postRequest("/regular/generateConvictCondition",json,function(result){
+                console.log(result);
+                if(result.success){
+                   alert("成功");
+                }else{
+                }
+            });
         });
 
     });
@@ -300,11 +315,6 @@
 
         var aDetail;
 
-//           @RequestParam int progression,
-//            @RequestParam int step,
-//            @RequestParam int level,
-//            @RequestParam int countType,
-//            @RequestParam int count,
 
         for(var i = 0;i< progression.length;i++){
 
