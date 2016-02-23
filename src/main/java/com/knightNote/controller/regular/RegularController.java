@@ -6,6 +6,7 @@ import com.knightNote.repository.regular.RegularSubRepository;
 import com.knightNote.repository.regular.UserRegularRepository;
 import com.knightNote.repository.regular.UserRegularSubRepository;
 import com.knightNote.repository.user.UserRepository;
+import com.knightNote.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,6 +43,9 @@ public class RegularController {
 
     @Autowired
     ConvictConditionRepository convictConditionRepository;
+
+    @Autowired
+    UserService userService;
 
     /**
      * 囚徒健身 生成记录
@@ -84,6 +88,20 @@ public class RegularController {
         res.put("success",1);
         return res;
 
+    }
+
+    @RequestMapping("retrieveLast")
+    public Object retrieveLast(
+            @RequestHeader String accessToken) {
+        Map<String, Object> res = new HashMap<>();
+
+        //todo 没了user
+        if(userService.validateUser(accessToken)!=null){
+            return userService.validateUser(accessToken);
+        }
+
+        res.put("success",1);
+        return res;
     }
 
 
