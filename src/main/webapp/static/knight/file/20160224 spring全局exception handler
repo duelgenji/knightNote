@@ -1,0 +1,43 @@
+
+方法一
+写一个基类  使用到功能的extends 之
+public abstract class AbstractController {
+
+    @ResponseStatus(value= HttpStatus.OK)
+    public static class OrderNotFoundException extends RuntimeException {
+        // ...
+    }
+
+    @ExceptionHandler(OrderNotFoundException.class)
+    public Object handleError(HttpServletRequest req, Exception exception) {
+        Map<String, Object> res = new HashMap<>();
+        res.put("success",0);
+        res.put("message","请先登录");
+        res.put("error","000");
+        return res;
+    }
+
+}
+
+
+方法二 注解ControllerAdvice
+
+@ControllerAdvice
+public class GlobalControllerExceptionHandler{
+
+    @ResponseStatus(value= HttpStatus.OK)
+    public static class UserNotFoundException extends RuntimeException {}
+
+    @ExceptionHandler(UserNotFoundException.class)
+    @ResponseBody
+    public Object handleConflict() {
+        Map<String, Object> res = new HashMap<>();
+        res.put("success",0);
+        res.put("message","请先登录");
+        res.put("error","000");
+        return res;
+    }
+}
+
+
+两种方法 最终controller里使用都是直接 throw new UserNotFoundException();

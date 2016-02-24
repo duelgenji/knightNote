@@ -1,5 +1,6 @@
 package com.knightNote.controller.regular;
 
+import com.knightNote.controller.GlobalControllerExceptionHandler.*;
 import com.knightNote.entity.user.User;
 import com.knightNote.repository.regular.RegularRepository;
 import com.knightNote.repository.regular.RegularSubRepository;
@@ -8,10 +9,7 @@ import com.knightNote.repository.regular.UserRegularSubRepository;
 import com.knightNote.repository.user.UserRepository;
 import com.knightNote.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import com.knightNote.entity.regular.ConvictCondition;
 import com.knightNote.repository.regular.*;
 import org.springframework.transaction.annotation.Transactional;
@@ -91,13 +89,21 @@ public class RegularController {
     }
 
     @RequestMapping("retrieveLast")
-    public Object retrieveLast(
-            @RequestHeader String accessToken) {
+    public Object retrieveLast(@RequestParam int type,
+            @RequestHeader(required = false) String accessToken){
         Map<String, Object> res = new HashMap<>();
 
-        //todo 没了user
-        if(userService.validateUser(accessToken)!=null){
-            return userService.validateUser(accessToken);
+//        User user = userRepository.findByAccessToken(accessToken);
+//
+//        if(user==null){
+//            res.put("success",0);
+//            res.put("message","请先登录");
+//            res.put("error","000");
+//            return res;
+//        }
+
+        if(type==0){
+            throw new UserNotFoundException();
         }
 
         res.put("success",1);
