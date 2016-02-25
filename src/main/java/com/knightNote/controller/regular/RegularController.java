@@ -62,14 +62,7 @@ public class RegularController {
             @RequestHeader String accessToken){
         Map<String, Object> res = new HashMap<>();
 
-        User user = userRepository.findByAccessToken(accessToken);
-
-        if(user==null){
-            res.put("success",0);
-            res.put("message","请先登录");
-            res.put("error","000");
-            return res;
-        }
+        User user = userService.getUserByToken(accessToken);
 
         ConvictCondition cc = new ConvictCondition();
         cc.setUser(user);
@@ -89,22 +82,10 @@ public class RegularController {
     }
 
     @RequestMapping("retrieveLast")
-    public Object retrieveLast(@RequestParam int type,
-            @RequestHeader(required = false) String accessToken){
+    public Object retrieveLast(@RequestHeader(required = false) String accessToken){
         Map<String, Object> res = new HashMap<>();
 
-//        User user = userRepository.findByAccessToken(accessToken);
-//
-//        if(user==null){
-//            res.put("success",0);
-//            res.put("message","请先登录");
-//            res.put("error","000");
-//            return res;
-//        }
-
-        if(type==0){
-            throw new UserNotFoundException();
-        }
+        User user = userService.getUserByToken(accessToken);
 
         res.put("success",1);
         return res;
