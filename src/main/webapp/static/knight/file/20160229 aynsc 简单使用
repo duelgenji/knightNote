@@ -1,0 +1,7 @@
+在applicaiton里加上
+@EnableAsync
+
+方法函数上加
+@Async
+
+就可以实现 controller中先返回 费事操作 继续进行（比如 发送邮件等）
