@@ -33,6 +33,11 @@ passwd
 ====创建链接====
  ln -s 源文件 目标文件
 
+==== 端口 进程====
+端口  netstat -tupln
+进程  ps -e
+都可以加 |  grep ...
+
 
 ====防火墙配置  新增端口====
 vi /etc/sysconfig/iptables
@@ -40,3 +45,31 @@ vi /etc/sysconfig/iptables
 -A INPUT -m state --state NEW -m tcp -p tcp --dport 8080 -j ACCEPT
 
 service iptables restart
+
+
+==== 增加 init.d service  ====
+例如：建tomcat的service
+vi /etc/init.d/tomcat
+
+export CATALINA_HOME=/root/tomcat
+
+case $1 in
+start)
+sh $CATALINA_HOME/bin/startup.sh
+;;
+stop)
+sh $CATALINA_HOME/bin/shutdown.sh
+;;
+restart)
+sh $CATALINA_HOME/bin/shutdown.sh
+sh $CATALINA_HOME/bin/startup.sh
+;;
+esac
+exit 0
+保存
+
+ls -li 查看 文件拥有者和读写权限  不然无法运行
+
+* chown root:root tomcat 修改文件
+* chmod 755 tomcat
+用户 用户组 别人  读、写、运 r=4,w=2,x=1
