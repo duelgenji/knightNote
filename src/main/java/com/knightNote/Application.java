@@ -1,4 +1,4 @@
-package com.wonders.xlab.framework;
+package com.knightNote;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.datatype.hibernate4.Hibernate4Module;
@@ -30,7 +30,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @EnableScheduling
 @EntityScan({"${app.basePackages}"})
 @ComponentScan({"${app.basePackages}"})
-public class  Application extends SpringBootServletInitializer {
+public class Application extends SpringBootServletInitializer {
 
     @Value("${jackson.indent.output}")
     private boolean jacksonIndentOutput = false;
