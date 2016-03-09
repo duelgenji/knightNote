@@ -69,10 +69,10 @@
                 <a class="ui red ribbon label">俯卧撑</a>
                 <div class="content">
                     <div class="meta">
-                        墙壁俯卧撑
+                        　
                     </div>
                     <div class="description">
-                        正在进行：二式 中级
+                        　
                     </div>
                 </div>
 
@@ -89,10 +89,10 @@
                 <div class="content">
                     <a class="ui orange ribbon label">深蹲</a>
                     <div class="meta">
-                        墙壁俯卧撑
+                        　
                     </div>
                     <div class="description">
-                        正在进行：二式 中级
+                        　
                     </div>
                 </div>
                 <div class="extra">
@@ -108,10 +108,10 @@
                 <div class="content">
                     <a class="ui blue ribbon label">引体向上</a>
                     <div class="meta">
-                        墙壁俯卧撑
+                        　
                     </div>
                     <div class="description">
-                        正在进行：二式 中级
+                        　
                     </div>
                 </div>
                 <div class="extra">
@@ -128,10 +128,10 @@
                     <a class="ui teal ribbon label">举腿</a>
 
                     <div class="meta">
-                        墙壁俯卧撑
+                        　
                     </div>
                     <div class="description">
-                        正在进行：二式 中级
+                        　
                     </div>
                 </div>
                 <div class="extra">
@@ -148,10 +148,10 @@
                     <a class="ui violet ribbon label">桥</a>
 
                     <div class="meta">
-                        墙壁俯卧撑
+                        　
                     </div>
                     <div class="description">
-                        正在进行：二式 中级
+                        　
                     </div>
                 </div>
                 <div class="extra">
@@ -168,10 +168,10 @@
                     <a class="ui green ribbon label">倒立撑</a>
 
                     <div class="meta">
-                        墙壁俯卧撑
+                        　
                     </div>
                     <div class="description">
-                        正在进行：二式 中级
+                        　
                     </div>
                 </div>
                 <div class="extra">
@@ -238,6 +238,9 @@
     var aLevel = ["自定义","初级标准","中级标准","高级标准"];
     var aList = [];
 
+    var aShi = ["","一","二","三","四","五","六","七","八","九","十"];
+    var aJi = ["","初","中","高"];
+
     $(document).ready(function(){
 //        $("#sout").html(navigator.userAgent);
 
@@ -300,6 +303,26 @@
                 }
             });
         });
+
+        postRequest("/regular/retrieveLast",null,function(result){
+            if(result.success==1){
+                /** @namespace result.convictConditionList */
+                var ccList = result.convictConditionList;
+                var progression,step,level;
+                for(var i = 0 ; i<ccList.length;i++){
+                    progression = ccList[i].progression;
+                    step = ccList[i].step;
+                    level = ccList[i].level;
+                    $(".menu[data-progression='"+progression+"']").find(".meta").html(aList[progression][step].split(" ")[0]);
+
+                    $(".menu[data-progression='"+progression+"']").find(".description").html("正在进行： "+aShi[step]+"式 "+aJi[level]+"级");
+
+                }
+
+            }
+            console.log(result);
+        });
+
 
     });
 

@@ -1,5 +1,6 @@
 package com.knightNote.controller.regular;
 
+import com.knightNote.controller.GlobalControllerExceptionHandler;
 import com.knightNote.controller.GlobalControllerExceptionHandler.*;
 import com.knightNote.entity.user.User;
 import com.knightNote.repository.regular.RegularRepository;
@@ -15,6 +16,7 @@ import com.knightNote.repository.regular.*;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -63,6 +65,9 @@ public class RegularController {
         Map<String, Object> res = new HashMap<>();
 
         User user = userService.getUserByToken(accessToken);
+        if(user==null){
+            throw new GlobalControllerExceptionHandler.UserNotFoundException();
+        }
 
         ConvictCondition cc = new ConvictCondition();
         cc.setUser(user);
@@ -82,12 +87,18 @@ public class RegularController {
     }
 
     @RequestMapping("retrieveLast")
-    public Object retrieveLast(@RequestHeader(required = false) String accessToken){
+    public Object retrieveLast(@RequestHeader String accessToken){
         Map<String, Object> res = new HashMap<>();
 
         User user = userService.getUserByToken(accessToken);
+        if(user==null){
+            throw new GlobalControllerExceptionHandler.UserNotFoundException();
+        }
+
+        List<ConvictCondition> convictConditionList = convictConditionRepository.findEachProgressionLastOne(user.getId());
 
         res.put("success",1);
+        res.put("convictConditionList",convictConditionList);
         return res;
     }
 

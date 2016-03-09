@@ -1,5 +1,6 @@
 package com.knightNote.entity.regular;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.knightNote.entity.user.User;
 import com.wonders.xlab.framework.entity.AbstractBaseEntity;
 import org.hibernate.envers.Audited;
@@ -18,6 +19,7 @@ public class ConvictCondition extends AbstractBaseEntity<Long> {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn
+    @JsonIgnore
     private User user;
 
     /**
@@ -69,8 +71,8 @@ public class ConvictCondition extends AbstractBaseEntity<Long> {
         this.user = user;
     }
 
-    public Progression getProgression() {
-        return progression;
+    public int getProgression() {
+        return progression.ordinal();
     }
 
     public void setProgression(Progression progression) {

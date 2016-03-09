@@ -1,12 +1,26 @@
-package com.knightNote;
+package com.wonders.xlab.framework;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonSerializer;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializerProvider;
+import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.datatype.hibernate4.Hibernate4Module;
 import com.fasterxml.jackson.datatype.joda.JodaModule;
+import com.fasterxml.jackson.datatype.joda.cfg.JacksonJodaDateFormat;
+import com.fasterxml.jackson.datatype.joda.ser.DateTimeSerializer;
 import com.wonders.xlab.framework.repository.MyRepositoryImpl;
+import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.boot.orm.jpa.EntityScan;
@@ -14,12 +28,22 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.format.datetime.DateFormatter;
+import org.springframework.format.datetime.DateFormatterRegistrar;
+import org.springframework.format.datetime.joda.JodaTimeFormatterRegistrar;
+import org.springframework.format.number.NumberFormatAnnotationFormatterFactory;
+import org.springframework.format.support.DefaultFormattingConversionService;
+import org.springframework.format.support.FormattingConversionService;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @SpringBootApplication
 @EnableJpaAuditing
@@ -52,12 +76,34 @@ public class Application extends SpringBootServletInitializer {
         Hibernate4Module hibernateModule = new Hibernate4Module();
         hibernateModule.disable(Hibernate4Module.Feature.USE_TRANSIENT_ANNOTATION);
 
+        JodaModule jodaModule = new JodaModule();
+        jodaModule.addSerializer(DateTime.class, new DateTimeSerializer(new JacksonJodaDateFormat(
+                DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss").withZoneUTC())));
+
         return Jackson2ObjectMapperBuilder.json()
-                .modules(hibernateModule, new JodaModule())
+                .modules(hibernateModule, jodaModule)
                 .simpleDateFormat("yyyy-MM-dd HH:mm:ss")
                 .indentOutput(jacksonIndentOutput)
                 .serializationInclusion(JsonInclude.Include.NON_NULL);
     }
+
+//    @Bean
+//    public Integer port() {
+//        return SocketUtils.findAvailableTcpPort();
+//    }
+//
+//    @Bean
+//    public EmbeddedServletContainerFactory servletContainer() {
+//        TomcatEmbeddedServletContainerFactory tomcat = new TomcatEmbeddedServletContainerFactory();
+//        tomcat.addAdditionalTomcatConnectors(createSslConnector());
+//        return tomcat;
+//    }
+//
+//    private Connector createSslConnector() {
+//        Connector connector = new Connector("org.apache.coyote.http11.Http11NioProtocol");
+//        connector.setPort(port());
+//        return connector;
+//    }
 
     @Bean
     public RestTemplate restTemplate() {
