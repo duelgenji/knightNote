@@ -33,7 +33,7 @@
         }
 
         .menu .content{
-            /*height: 200px;*/
+            padding: 10px 0 5px 0;
         }
 
 
@@ -55,6 +55,9 @@
         }
 
 
+        .extra{
+            /*display: none;*/
+        }
 
 
     </style>
@@ -69,7 +72,7 @@
                 <a class="ui red ribbon label">俯卧撑</a>
                 <div class="content">
                     <div class="meta">
-                        　
+                        上一次：
                     </div>
                     <div class="description">
                         　
@@ -86,10 +89,10 @@
         </div>
         <div class="menu" data-progression="1">
             <div class="menu-wrap">
+                <a class="ui orange ribbon label">深蹲</a>
                 <div class="content">
-                    <a class="ui orange ribbon label">深蹲</a>
                     <div class="meta">
-                        　
+                        上一次：
                     </div>
                     <div class="description">
                         　
@@ -105,10 +108,10 @@
         </div>
         <div class="menu" data-progression="2">
             <div class="menu-wrap">
+                <a class="ui blue ribbon label">引体向上</a>
                 <div class="content">
-                    <a class="ui blue ribbon label">引体向上</a>
                     <div class="meta">
-                        　
+                        上一次：
                     </div>
                     <div class="description">
                         　
@@ -124,11 +127,11 @@
         </div>
         <div class="menu" data-progression="3">
             <div class="menu-wrap">
+                <a class="ui teal ribbon label">举腿</a>
                 <div class="content">
-                    <a class="ui teal ribbon label">举腿</a>
 
                     <div class="meta">
-                        　
+                        上一次：
                     </div>
                     <div class="description">
                         　
@@ -144,11 +147,11 @@
         </div>
         <div class="menu" data-progression="4">
             <div class="menu-wrap">
+                <a class="ui violet ribbon label">桥</a>
                 <div class="content">
-                    <a class="ui violet ribbon label">桥</a>
 
                     <div class="meta">
-                        　
+                        上一次：
                     </div>
                     <div class="description">
                         　
@@ -164,11 +167,11 @@
         </div>
         <div class="menu" data-progression="5">
             <div class="menu-wrap">
+                <a class="ui green ribbon label">倒立撑</a>
                 <div class="content">
-                    <a class="ui green ribbon label">倒立撑</a>
 
                     <div class="meta">
-                        　
+                        上一次：
                     </div>
                     <div class="description">
                         　
@@ -184,6 +187,13 @@
         </div>
 
     </div>
+
+    <div style="text-align: center;">
+        <button id="showImage" class="ui circular grey icon button">
+            <i class="file image outline icon"></i>
+        </button>
+    </div>
+
 
     <div class="ui modal">
         <i class="close icon"></i>
@@ -240,10 +250,14 @@
 
     var aShi = ["","一","二","三","四","五","六","七","八","九","十"];
     var aJi = ["","初","中","高"];
+    var aXq = ["","周一","周二","周三","周四","周五","周六","周日"];
 
     $(document).ready(function(){
 //        $("#sout").html(navigator.userAgent);
 
+        $("#showImage").on("click",function(){
+            window.open("http://cdn.zhixin.me/knight_progressions.jpg");
+        });
 
         //加载 囚徒健身列表
         $.get("static/knight/js/convictCondition.txt",function(data){
@@ -296,7 +310,7 @@
             json.countGroup = countGroup;
 
             postRequest("/regular/generateConvictCondition",json,function(result){
-                console.log(result);
+//                console.log(result);
                 if(result.success){
                    alert("成功");
                 }else{
@@ -304,23 +318,29 @@
             });
         });
 
+
         postRequest("/regular/retrieveLast",null,function(result){
             if(result.success==1){
                 /** @namespace result.convictConditionList */
                 var ccList = result.convictConditionList;
-                var progression,step,level;
+                var progression,step,level,lastTimeText,lastDate,date;
                 for(var i = 0 ; i<ccList.length;i++){
                     progression = ccList[i].progression;
                     step = ccList[i].step;
                     level = ccList[i].level;
-                    $(".menu[data-progression='"+progression+"']").find(".meta").html(aList[progression][step].split(" ")[0]);
+                    date = ccList[i].createdDate;
 
-                    $(".menu[data-progression='"+progression+"']").find(".description").html("正在进行： "+aShi[step]+"式 "+aJi[level]+"级");
+                    lastDate = new Date(date);
+                    lastTimeText =(lastDate.getMonth()+1) + "月" + lastDate.getDate() + "日 " + aXq[new Date(date).getDay()];
+
+                    var $2 = $(".menu[data-progression='" + progression + "']");
+                    $2.find(".meta").append(""+lastTimeText+"");
+                    $2.find(".description").html(aShi[step]+"式—"+aList[progression][step].split(" ")[0]+" "+aJi[level]+"级");
 
                 }
 
             }
-            console.log(result);
+//            console.log(result);
         });
 
 
