@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Hello Knight!</title>
+    <link href="static/knight/css/basic.css" rel="stylesheet"/>
+
+</head>
+<body>
+<p> Step.1 </p>
+
+<div><span>状态栏：</span><span id="status">等待...</span></div>
+
+<div>
+    <label for="account">账号</label><input type="text" id="account" />
+</div>
+<div>
+    <label for="password">密码</label><input type="password" id="password"/>
+</div>
+<button id="register">注册</button><button id="login">登陆</button><button id="logout">登出</button>
+
+<div>
+    <label for="noteContent">正文</label><textarea id="noteContent"></textarea>
+    <button id="createNote">提交note</button>
+</div>
+
+
+<a href="workout.html">囚徒健身</a>
+
+<script src="static/knight/js/jquery-2.1.4.min.js"></script>
+<script src="static/knight/js/basic.js"></script>
+
+<script>
+
+    $(document).ready(function(){
+
+
+        /**
+         * register
+         */
+        $("#register").on("click",function(){
+
+            var json = {};
+            json.account = $("#account").val();
+            json.password = $("#password").val();
+
+            postRequest("/user/register",json,function(result){
+                if(result.success){
+                    $("#status").html("注册成功");
+                }else{
+                    $("#status").html("注册失败:"+result.message);
+                }
+            });
+
+        });
+
+        /**
+         * login
+         */
+        $("#login").on("click",function(){
+
+            var json = {};
+            json.account = $("#account").val();
+            json.password = $("#password").val();
+
+            postRequest("/user/login",json,function(result){
+                console.log(result);
+                if(result.success){
+                    $("#status").html("登陆成功:"+"token"+result.accessToken);
+                    localStorage.accessToken = result.accessToken;
+                }else{
+                    $("#status").html("登陆失败:"+result.message);
+                }
+            });
+
+        });
+
+        /**
+         * logout
+         */
+        $("#logout").on("click",function(){
+            postRequest("/user/logout",null,function(result){
+                if(result.success){
+                    $("#status").html("登出成功");
+                    localStorage.removeItem("accessToken");
+                }else{
+                }
+            });
+        });
+
+
+        /**
+         * create a note
+         */
+        $("#createNote").on("click",function(){
+
+            var json = {};
+            json.content = $("#noteContent").val();
+
+            postRequest("/note/generateNote",json,function(result){
+                console.log(result);
+                if(result.success){
+                    $("#status").html("发表成功！");
+                }else{
+                }
+            });
+
+        });
+
+//        $.ajax({
+//            type:"post",
+//            url:"/note/generateNote",
+//            success:function(result){
+//                console.log("suc");
+//            }
+//        });
+
+    });
+
+</script>
+</body>
+</html>
