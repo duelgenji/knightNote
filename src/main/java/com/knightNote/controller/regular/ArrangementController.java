@@ -22,7 +22,7 @@ import java.util.Map;
  * Created by Knight on 2015/11/24 23:52.
  */
 @RestController
-@RequestMapping("regular/")
+@RequestMapping("arrangement/")
 public class ArrangementController {
 
     @Autowired
@@ -61,7 +61,7 @@ public class ArrangementController {
      * 新建 短期计划
      */
     @RequestMapping("generateArrangement")
-    public Object generateConvictCondition(
+    public Object generateArrangement(
             @RequestParam String title,
             @RequestParam(required = false) String remark,
             @RequestHeader String accessToken){
@@ -88,8 +88,8 @@ public class ArrangementController {
      * 修改 短期计划
      * @param action 0 取消 1 完成
      */
-    @RequestMapping("generateArrangement")
-    public Object generateConvictCondition(
+    @RequestMapping("modifyArrangement")
+    public Object modifyArrangement(
             @RequestParam long arrangementId,
             @RequestParam int action,
             @RequestHeader String accessToken){
