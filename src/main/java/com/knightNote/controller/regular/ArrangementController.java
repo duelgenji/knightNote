@@ -8,6 +8,11 @@ import com.knightNote.repository.regular.*;
 import com.knightNote.repository.user.UserRepository;
 import com.knightNote.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,18 +47,21 @@ public class ArrangementController {
      * 计划列表
      */
     @RequestMapping("retrieveArrangements")
-    public Object retrieveLast(@RequestHeader String accessToken){
+    public Object retrieveLast(@RequestHeader String accessToken,
+                               @PageableDefault(page = 0, size = 20) Pageable pageable){
         Map<String, Object> res = new HashMap<>();
 
         User user = userService.getUserByToken(accessToken);
         if(user==null){
             throw new UserNotFoundException();
         }
+        Sort sort = new Sort(Sort.Direction.ASC, "complete").and(new Sort(Sort.Direction.ASC, "cancel")).and(new Sort(Sort.Direction.DESC,"createdDate"));
+        pageable = new PageRequest(pageable.getPageNumber(),pageable.getPageSize(),sort);
 
-        List<Arrangement> arrangements = arrangementRepository.findByUser(user);
+        Page<Arrangement> arrangements = arrangementRepository.findByUser(user,pageable);
 
         res.put("success",1);
-        res.put("arrangements",arrangements);
+        res.put("arrangements",arrangements.getContent());
         return res;
     }
 

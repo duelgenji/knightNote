@@ -72,8 +72,11 @@
 <script src="static/knight/js/jquery-2.1.4.min.js"></script>
 <script src="static/semantic/semantic.js"></script>
 <script src="static/knight/js/basic.js"></script>
+<script src="static/knight/js/date-utils.js"></script>
 
 <script>
+
+    var page = 0;
 
     $(document).ready(function(){
 
@@ -103,6 +106,16 @@
          * 点击 完成
          */
         $(document).on("click",".complete",function(e) {
+            var json = {};
+            json.arrangementId = $(this).closest("tr").data("id");
+            json.action = 1;
+            postRequest("/arrangement/modifyArrangement",json,function(result){
+                console.log(result);
+                if(result.success){
+                    refreshList();
+                }else{
+                }
+            });
             e.stopPropagation();
         });
 
@@ -110,6 +123,16 @@
          * 点击 取消
          */
         $(document).on("click",".cancel",function(e) {
+            var json = {};
+            json.arrangementId = $(this).closest("tr").data("id");
+            json.action = 0;
+            postRequest("/arrangement/modifyArrangement",json,function(result){
+                console.log(result);
+                if(result.success){
+                    refreshList();
+                }else{
+                }
+            });
             e.stopPropagation();
         });
 
@@ -125,37 +148,39 @@
             postRequest("/arrangement/generateArrangement",json,function(result){
                 console.log(result);
                 if(result.success){
-                   alert("成功");
+                    refreshList();
                 }else{
                 }
             });
         });
 
         $(document).on("click","#prev",function(){
-            var json = {};
-
-            json.arrangementId = 1;
-            json.action = 0;
-
-            postRequest("/arrangement/modifyArrangement",json,function(result){
-                console.log(result);
-                if(result.success){
-                    alert("成功");
-                }else{
-                }
-            });
+            page--;
+            refreshList();
+        });
+        $(document).on("click","#next",function(){
+            page++;
+            refreshList();
         });
 
 
-        postRequest("/arrangement/retrieveArrangements",null,function(result){
+        refreshList();
+
+
+    });
+
+    function refreshList(){
+
+        var json = {};
+        json.page = page;
+
+        postRequest("/arrangement/retrieveArrangements",json,function(result){
             if(result.success==1){
                 updateList(result);
             }
             console.log(result);
         });
-
-
-    });
+    }
 
     function updateList(data){
 
@@ -176,12 +201,14 @@
                 statusClass = 'default';
             }
 
+            ;
+
             trHtml ='<tr class="'+statusClass+'" data-id="'+list[i].id+'" >' +
                     '<td>'+list[i].title+'</td> ' +
-                    '<td>'+list[i].lastModifiedDate+'</td> ' +
+                    '<td>'+timeago(list[i].lastModifiedDate)+'</td> ' +
                     '<td><div class="status">'+status+'</div><div class="actions"><a class="complete" href="javascript:void(0)">完成</a> &nbsp;<a class="cancel" href="javascript:void(0)">取消</a></div></td>'+
                     '</tr>';
-            $('#list_body').prepend(trHtml);
+            $('#list_body').append(trHtml);
         }
     }
 

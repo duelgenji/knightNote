@@ -28,7 +28,6 @@ if(window.location.host.match("localhost")){
     ContextUrl=window.location.protocol+"//"+window.location.host;
 }
 function postRequest(url,data,successFunction){
-
     $.ajax({
         type:"post",
         headers: {accessToken: localStorage.accessToken ? localStorage.accessToken:""},
@@ -36,5 +35,4 @@ function postRequest(url,data,successFunction){
         url:ContextUrl+url,
         success:successFunction
     });
-
 }

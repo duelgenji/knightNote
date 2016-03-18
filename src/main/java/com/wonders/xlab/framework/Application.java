@@ -13,6 +13,7 @@ import com.fasterxml.jackson.datatype.joda.cfg.JacksonJodaDateFormat;
 import com.fasterxml.jackson.datatype.joda.ser.DateTimeSerializer;
 import com.wonders.xlab.framework.repository.MyRepositoryImpl;
 import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.slf4j.Logger;
@@ -44,6 +45,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
+import java.util.TimeZone;
 
 @SpringBootApplication
 @EnableJpaAuditing
@@ -82,7 +85,7 @@ public class Application extends SpringBootServletInitializer {
 
         return Jackson2ObjectMapperBuilder.json()
                 .modules(hibernateModule, jodaModule)
-                .simpleDateFormat("yyyy-MM-dd HH:mm:ss")
+                .simpleDateFormat("yyyy-MM-dd HH:mm:ss").timeZone("GMT+8")
                 .indentOutput(jacksonIndentOutput)
                 .serializationInclusion(JsonInclude.Include.NON_NULL);
     }
