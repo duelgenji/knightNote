@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="static/editormd/css/editormd.min.css" />
+
+</head>
+<body>
+<div class="container" style="height: 500px;">
+    <div id="editormd">
+    </div>
+</div>
+
+<button id="btn">change</button>
+
+<div id="preview"></div>
+<div id="preview2"></div>
+
+<script src="static/knight/js/jquery-2.1.4.min.js"></script>
+<script src="static/editormd/js/editormd.min.js"></script>
+<script type="text/javascript">
+    $(function() {
+        var editor = editormd("editormd", {
+            path : "static/editormd/lib/", // Autoload modules mode, codemirror, marked... dependents libs path
+            saveHTMLToTextarea : true,
+            tocm            : true,    // Using [TOCM]
+            emoji           : true,
+            taskList        : true,
+            tex             : true,  // 默认不解析
+            flowChart       : true,  // 默认不解析
+            sequenceDiagram : true  // 默认不解析
+        });
+
+//        var html = '<h4 id="h4-get-value"><a name="Get value" class="reference-link"></a><span class="header-link octicon octicon-link"></span>Get value</h4><p>每个 Editor.md 的 ID 元素下都有一个保存 Markdown 源码的 Textarea，你也可以通过设置开启另一个保存 HTML 源码的 Textarea，可以按需要获取相应的值，如下：</p><pre class="prettyprint linenums prettyprinted"><ol class="linenums"><li class="L0"><code class="lang-html"><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"editormd"</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"$id"</span><span class="tag">&gt;</span></code></li><li class="L1"><code class="lang-html"><span class="pln">    </span><span class="tag">&lt;textarea</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"editormd-markdown-textarea"</span><span class="pln"> </span><span class="atn">name</span><span class="pun">=</span><span class="atv">"$id-markdown-doc"</span><span class="tag">&gt;&lt;/textarea&gt;</span></code></li><li class="L2"><code class="lang-html"></code></li><li class="L3"><code class="lang-html"><span class="pln">    </span><span class="com">&lt;!-- html textarea 需要开启配置项 saveHTMLToTextarea == true --&gt;</span></code></li><li class="L4"><code class="lang-html"><span class="pln">    </span><span class="tag">&lt;textarea</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"editormd-html-textarea"</span><span class="pln"> </span><span class="atn">name</span><span class="pun">=</span><span class="atv">"$id-html-code"</span><span class="tag">&gt;&lt;/textarea&gt;</span></code></li><li class="L5"><code class="lang-html"><span class="tag">&lt;/div&gt;</span></code></li></ol></pre>';
+
+        $("#btn").on("click",function(){
+//            $("#preview").append();
+            var testEditormdView, testEditormdView2;
+            testEditormdView = editormd.markdownToHTML("preview", {
+                markdown        : editor.getPreviewedHTML() ,//+ "\r\n" + $("#append-test").text(),
+                //htmlDecode      : true,       // 开启 HTML 标签解析，为了安全性，默认不开启
+                htmlDecode      : "style,script,iframe",  // you can filter tags decode
+                //toc             : false,
+                tocm            : true,    // Using [TOCM]
+                //tocContainer    : "#custom-toc-container", // 自定义 ToC 容器层
+                //gfm             : false,
+                //tocDropdown     : true,
+                // markdownSourceCode : true, // 是否保留 Markdown 源码，即是否删除保存源码的 Textarea 标签
+                emoji           : true,
+                taskList        : true,
+                tex             : true,  // 默认不解析
+                flowChart       : true,  // 默认不解析
+                sequenceDiagram : true  // 默认不解析
+            });
+
+            editormd.markdownToHTML("preview2", {
+                htmlDecode      : "style,script,iframe",  // you can filter tags decode
+                emoji           : true,
+                taskList        : true,
+                tex             : true,  // 默认不解析
+                flowChart       : true,  // 默认不解析
+                sequenceDiagram : true // 默认不解析
+            });
+        });
+        /*
+         // or
+         var editor = editormd({
+         id   : "editormd",
+         path : "../lib/"
+         });
+         */
+
+
+
+    });
+</script>
+</body>
+</html>

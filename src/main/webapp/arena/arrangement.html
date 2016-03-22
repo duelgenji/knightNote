@@ -185,7 +185,7 @@
     function updateList(data){
 
         var list = data.arrangements;
-        var status = '', statusClass = '',trHtml = '',timeHtml = '';
+        var status = '' , statusClass = '' , trHtml = '' , timeHtml = '';
 
         $('#list_body').empty();
         for(var i =0 ; i<list.length;i++){
@@ -201,14 +201,14 @@
                 statusClass = 'default';
             }
 
-            ;
-
             trHtml ='<tr class="'+statusClass+'" data-id="'+list[i].id+'" >' +
                     '<td>'+list[i].title+'</td> ' +
                     '<td>'+timeago(list[i].lastModifiedDate)+'</td> ' +
                     '<td><div class="status">'+status+'</div><div class="actions"><a class="complete" href="javascript:void(0)">完成</a> &nbsp;<a class="cancel" href="javascript:void(0)">取消</a></div></td>'+
                     '</tr>';
+
             $('#list_body').append(trHtml);
+
         }
     }
 
