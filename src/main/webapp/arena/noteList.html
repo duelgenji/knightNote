@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <title></title>
+    <link href="static/semantic/semantic.css" rel="stylesheet"/>
+
+    <style>
+
+        body {
+            font-size: 12px;
+        }
+        .container{
+            padding: 20px 0;
+            max-width: 768px;
+            margin: 0 auto;
+        }
+
+        .actions{
+            display: none;
+        }
+
+
+    </style>
+
+</head>
+<body>
+<div class="container">
+
+    <div class="ui action input">
+        <input id="content" type="text" placeholder="...">
+        <button id="save" class="circular ui icon button">
+            <i class="icon add"></i>
+        </button>
+    </div>
+
+    <div class="ui divided items">
+        <div class="item">
+            <div class="ui small image">
+                <img src="/images/wireframe/image.png">
+            </div>
+            <div class="content">
+                <div class="header">Arrowhead Valley Camp</div>
+                <div class="meta">
+                    <span class="price">$1200</span>
+                    <span class="stay">1 Month</span>
+                </div>
+                <div class="description">
+                    <p></p>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="ui small image">
+                <img src="/images/wireframe/image.png">
+            </div>
+            <div class="content">
+                <div class="header">Buck's Homebrew Stayaway</div>
+                <div class="meta">
+                    <span class="price">$1000</span>
+                    <span class="stay">2 Weeks</span>
+                </div>
+                <div class="description">
+                    <p></p>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="ui small image">
+                <img src="/images/wireframe/image.png">
+            </div>
+            <div class="content">
+                <div class="header">Astrology Camp</div>
+                <div class="meta">
+                    <span class="price">$1600</span>
+                    <span class="stay">6 Weeks</span>
+                </div>
+                <div class="description">
+                    <p></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button id="prev" class="ui left floated button">Prev</button>
+    <button id="next" class="ui right floated button">Next</button>
+</div>
+
+
+
+</body>
+<script src="static/knight/js/jquery-2.1.4.min.js"></script>
+<script src="static/semantic/semantic.js"></script>
+<script src="static/knight/js/basic.js"></script>
+<script src="static/knight/js/date-utils.js"></script>
+
+<script>
+
+    var page = 0;
+
+    $(document).ready(function(){
+
+
+        /**
+         * 行被点击 淡出/淡入 按钮
+         */
+        $(document).on("click","#list_body tr.default",function() {
+            var $this = $(this);
+            if($this.find(".status").css("display")=="none"){
+                $this.find(".actions").transition({
+                    animation : 'slide left',
+                    onComplete : function(){
+                        $this.find(".status").toggle();
+                    }
+                });
+            }else{
+                $this.find(".status").toggle();
+                $this.find(".actions").transition({
+                    animation : 'slide left'
+                });
+            }
+        });
+
+
+        /**
+         * 点击 完成
+         */
+        $(document).on("click",".complete",function(e) {
+            var json = {};
+            json.arrangementId = $(this).closest("tr").data("id");
+            json.action = 1;
+            postRequest("/arrangement/modifyArrangement",json,function(result){
+                console.log(result);
+                if(result.success){
+                    refreshList();
+                }else{
+                }
+            });
+            e.stopPropagation();
+        });
+
+        /**
+         * 点击 取消
+         */
+        $(document).on("click",".cancel",function(e) {
+            var json = {};
+            json.arrangementId = $(this).closest("tr").data("id");
+            json.action = 0;
+            postRequest("/arrangement/modifyArrangement",json,function(result){
+                console.log(result);
+                if(result.success){
+                    refreshList();
+                }else{
+                }
+            });
+            e.stopPropagation();
+        });
+
+        /**
+         * 保存 新计划
+         */
+        $(document).on("click","#save",function(){
+
+            var json = {};
+
+            json.title = $("#content").val();
+
+            postRequest("/arrangement/generateArrangement",json,function(result){
+                console.log(result);
+                if(result.success){
+                    refreshList();
+                }else{
+                }
+            });
+        });
+
+        $(document).on("click","#prev",function(){
+            page--;
+            refreshList();
+        });
+        $(document).on("click","#next",function(){
+            page++;
+            refreshList();
+        });
+
+
+        refreshList();
+
+
+    });
+
+    function refreshList(){
+
+        var json = {};
+        json.page = page;
+
+        postRequest("/arrangement/retrieveArrangements",json,function(result){
+            if(result.success==1){
+//                updateList(result);
+            }
+            console.log(result);
+        });
+    }
+
+    function updateList(data){
+
+        var list = data.arrangements;
+        var status = '' , statusClass = '' , trHtml = '' , timeHtml = '';
+
+        $('#list_body').empty();
+        for(var i =0 ; i<list.length;i++){
+
+            if(list[i].cancel){
+                status = '取消';
+                statusClass = 'negative';
+            }else if(list[i].complete){
+                status = '完成';
+                statusClass = 'positive';
+            }else{
+                status = '计划中';
+                statusClass = 'default';
+            }
+
+            trHtml ='<tr class="'+statusClass+'" data-id="'+list[i].id+'" >' +
+                    '<td>'+list[i].title+'</td> ' +
+                    '<td>'+timeago(list[i].lastModifiedDate)+'</td> ' +
+                    '<td><div class="status">'+status+'</div><div class="actions"><a class="complete" href="javascript:void(0)">完成</a> &nbsp;<a class="cancel" href="javascript:void(0)">取消</a></div></td>'+
+                    '</tr>';
+
+            $('#list_body').append(trHtml);
+
+        }
+    }
+
+</script>
+</html>
