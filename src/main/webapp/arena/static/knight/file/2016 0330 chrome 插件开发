@@ -1,0 +1,19 @@
+http://www.cnblogs.com/walkingp/archive/2011/03/31/2001628.html
+
+
+新建一个文件
+里面包含manifest.json 写参数
+
+chrome://extensions/
+chrome 工具栏中 扩展程序里面 有打包功能
+打包为 crx 安装即可
+
+查看其它扩展源码
+chrome://version/
+个人路径资料
+/Users/admin/Library/Application Support/Google/Chrome/Profile 1/Extensions/
+根据id 查找
+
+
+官方教程
+https://developer.chrome.com/extensions/samples
