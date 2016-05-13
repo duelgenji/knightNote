@@ -73,3 +73,17 @@ ls -li 查看 文件拥有者和读写权限  不然无法运行
 * chown root:root tomcat 修改文件
 * chmod 755 tomcat
 用户 用户组 别人  读、写、运 r=4,w=2,x=1
+
+
+apache2
+配置文件 修改端口
+/etc/httpd/conf/httpd.conf
+
+centos 7.2 启动apache 2
+systemctl start httpd.service
+
+关闭防火墙
+systemctl stop firewalld.service
+
+复制有端口的文件夹
+scp -r -P8071 doctor/ root@116.236.186.98:/var/www/html/xc/

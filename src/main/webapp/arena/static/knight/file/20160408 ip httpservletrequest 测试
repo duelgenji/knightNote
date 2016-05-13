@@ -1,0 +1,23 @@
+服务部署于 knights.space
+
+http://knights.space:8080/knight/user/iklogin
+
+公司网络访问
+{
+  "pc-header" : null,
+  "x-header" : null,
+  "wpc-header" : null,
+  "remoteAddr" : "101.95.108.22",
+  "remoteHost" : "101.95.108.22",
+  "remoteUser" : null
+}
+
+手机4G访问
+{
+  "pc-header" : null,
+  "x-header" : null,
+  "wpc-header" : null,
+  "remoteAddr" : "233.104.5.239",
+  "remoteHost" : "233.104.5.239",
+  "remoteUser" : null
+}

@@ -107,13 +107,16 @@
 
         });
 
-//        $.ajax({
-//            type:"post",
-//            url:"/note/generateNote",
-//            success:function(result){
-//                console.log("suc");
-//            }
-//        });
+        $.ajax({
+            type:"post",
+            data:{code:200},
+            url:"/user/test",
+            success:function(result){
+                console.log(result);
+            },error:function(e){
+                console.log(e);
+            }
+        });
 
     });
 

@@ -5,3 +5,12 @@ Password:
 /usr/local/lib
 
 
+npm install gulp -g
+
+cd 项目
+npm install gulp
+npm install gulp-connect
+
+运行
+gulp
+

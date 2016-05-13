@@ -6,16 +6,17 @@ import com.knightNote.repository.user.UserRepository;
 import com.knightNote.repository.user.UserSettingsRepository;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import javax.servlet.http.HttpServletRequest;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * Created by knightNote on 15/10/9.
@@ -124,6 +125,56 @@ public class UserController {
 
         res.put("success",1);
         return res;
+    }
+
+    /**
+     * 登陆
+     */
+    @RequestMapping("iklogin")
+    public Map<String ,Object> iklogin(
+            HttpServletRequest request,
+            @RequestParam(required = false) String account,
+            @RequestParam(required = false) String password){
+
+        Map<String, Object> res = new HashMap<>();
+
+        Date now = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("HHmmss");
+
+        res.put("success",1);
+        res.put("account",  sdf.format(now)+"@qq.com");
+        res.put("password", "12345678");
+
+        res.put("remoteUser", request.getRemoteUser());
+//        res.put("remoteAddr", request.getRemoteAddr());
+        Enumeration<String> enumeration = request.getHeaderNames();
+        while(enumeration.hasMoreElements()){
+            res.put(enumeration.nextElement(), request.getHeader(enumeration.nextElement()));
+        }
+//        res.put("x-header", request.getHeader("x-forwarded-for"));
+//        res.put("pc-header", request.getHeader("Proxy-Client-IP"));
+//        res.put("wpc-header", request.getHeader("WL-Proxy-Client-IP"));
+
+
+//        if (request.getHeader("x-forwarded-for") == null) {
+//            System.out.println("remoteAddr : " + request.getRemoteAddr());
+//        }else{
+//            System.out.println("x-header : " + request.getHeader("x-forwarded-for"));
+//        }
+
+
+
+        return res;
+    }
+
+    @RequestMapping("test")
+    public Object test(int code){
+
+        Map<String, Object> res = new HashMap<>();
+        res.put(code+"", HttpStatus.valueOf(code));
+//
+//        return res;
+        return ResponseEntity.status(code).body(res);
     }
 
 }
