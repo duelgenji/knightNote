@@ -87,3 +87,19 @@ systemctl stop firewalld.service
 
 复制有端口的文件夹
 scp -r -P8071 doctor/ root@116.236.186.98:/var/www/html/xc/
+
+
+linux apache
+yum install httpd
+/var/www/html
+/etc/httpd/conf/httpd.conf
+/etc/init.d/httpd start
+
+
+git 生成 key
+
+cd ~/.ssh
+ls
+查看本地存在的key 名为id_rsa.pub 或 id_dsa.pub
+
+生成key – ssh-keygen -t rsa -C “txnet2@126.com” 一条命令即可，后面会提示输入密码什么的，果断直接回车，空密码

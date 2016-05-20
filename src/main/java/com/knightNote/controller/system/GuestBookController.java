@@ -2,6 +2,7 @@ package com.knightNote.controller.system;
 
 import com.knightNote.entity.system.GuestBook;
 import com.knightNote.repository.system.GuestBookRepository;
+import com.knightNote.service.wx.WxService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,6 +20,9 @@ public class GuestBookController {
 
     @Autowired
     GuestBookRepository guestBookRepository;
+
+    @Autowired
+    WxService wxService;
 
     @RequestMapping("generateGuestBook")
     public Map<String ,Object> generateGuestBook(
@@ -38,5 +42,6 @@ public class GuestBookController {
         res.put("success", 1);
         return res;
     }
+
 
 }
