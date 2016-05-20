@@ -3,14 +3,13 @@ package com.knightNote.controller.system;
 import com.knightNote.entity.system.WxPostMessage;
 import com.knightNote.repository.system.WxPostMessageRepository;
 import com.knightNote.service.wx.WxService;
+import com.knightNote.utils.SignUtil;
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -40,10 +39,12 @@ public class WxController {
         return res;
     }
 
-    @RequestMapping("message")
+
+
+    @RequestMapping(value = "message",method = RequestMethod.POST)
     public Map<String ,Object> message(
             @RequestBody String body
-            ){
+    ){
         Map<String, Object> res = new HashMap<>();
 
         try {
@@ -59,9 +60,24 @@ public class WxController {
             e.printStackTrace();
         }
 
-
-        res.put("success", 1);
+        res.put("success", "post");
         return res;
+    }
+
+    @RequestMapping(value = "retrieveMessage",method = RequestMethod.GET)
+    public String retrieveMessage(
+            @RequestParam String signature,
+            @RequestParam String timestamp,
+            @RequestParam String nonce,
+            @RequestParam String echostr
+    ){
+        Map<String, Object> res = new HashMap<>();
+
+        if(SignUtil.checkSignature("genji",signature,timestamp,nonce)){
+            res.put("echostr", echostr);
+        }
+
+        return echostr;
     }
 
     @RequestMapping("retrieveMessage")
@@ -93,7 +109,6 @@ public class WxController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
 
     }
 }
