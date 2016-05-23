@@ -1,11 +1,15 @@
 package com.knightNote.utils;
 
+import org.dom4j.Document;
+import org.dom4j.io.OutputFormat;
+import org.dom4j.io.XMLWriter;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.web.client.RestTemplate;
 
+import java.io.ByteArrayOutputStream;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -100,6 +104,23 @@ public class WxUtils {
         System.out.println(res.get("asd1"));
 
 
+    }
+
+
+    public static String doc2String(Document document) {
+        String s = "";
+        try {
+            // 使用输出流来进行转化
+            ByteArrayOutputStream out = new ByteArrayOutputStream();
+            // 使用UTF-8编码
+            OutputFormat format = new OutputFormat("   ", true, "UTF-8");
+            XMLWriter writer = new XMLWriter(out, format);
+            writer.write(document);
+            s = out.toString("UTF-8");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return s;
     }
 
 }

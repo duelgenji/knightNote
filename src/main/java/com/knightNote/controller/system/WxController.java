@@ -11,10 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+
+import static com.knightNote.utils.WxUtils.doc2String;
 
 /**
  * Created by knight on 16/5/19.
@@ -81,7 +80,7 @@ public class WxController {
     }
 
     @RequestMapping("retrieveMessage")
-    public void retrieveMessage(
+    public String retrieveMessage(
             @RequestBody String body
     ){
         Map<String, String> res = new HashMap<>();
@@ -106,9 +105,53 @@ public class WxController {
             wxPostMessage.setMsgId(res.get("MsgId"));
             wxPostMessageRepository.save(wxPostMessage);
 
+            Map<String,String> map = new HashMap<>();
+
+            map.put("ToUserName",res.get("FromUserName"));
+            map.put("FromUserName",res.get("ToUserName"));
+            map.put("CreateTime",""+new Date().getTime());
+            map.put("MsgType","text");
+            map.put("Content",res.get("Content"));
+
+            document = DocumentHelper.createDocument();
+            nodeElement = document.addElement("xml");
+            for (Object obj : map.keySet()) {
+                Element keyElement = nodeElement.addElement(String.valueOf(obj));
+//            keyElement.addAttribute("label", String.valueOf(obj));
+                keyElement.setText(String.valueOf(map.get(obj)));
+            }
+
+            return doc2String(document);
+
+
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return "success";
+    }
+
+
+
+    @RequestMapping("localTest")
+    public String localTest(){
+        Map<String,String> map = new HashMap<>();
+
+        map.put("ToUserName","123");
+        map.put("FromUserName","321");
+        map.put("CreateTime","12312312321");
+        map.put("MsgType","asdasd12312asd");
+        map.put("Content","asdas12312gg");
+
+        Document document = DocumentHelper.createDocument();
+        Element nodeElement = document.addElement("xml");
+        for (Object obj : map.keySet()) {
+            Element keyElement = nodeElement.addElement(String.valueOf(obj));
+//            keyElement.addAttribute("label", String.valueOf(obj));
+            keyElement.setText(String.valueOf(map.get(obj)));
+        }
+        System.out.println(document);
+        System.out.println(doc2String(document));
+        return doc2String(document);
 
     }
 }
