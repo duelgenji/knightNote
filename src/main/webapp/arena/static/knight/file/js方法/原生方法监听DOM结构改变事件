@@ -1,0 +1,5 @@
+
+
+document.addEventListener('DOMNodeInserted',function(){alert(1)},false);
+document.addEventListener('DOMAttrModified',function(){alert(1)},false);
+document.addEventListener('DOMNodeRemoved',function(){alert(1)},false);
