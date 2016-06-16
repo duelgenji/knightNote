@@ -25,10 +25,12 @@ public class HttpUtils {
     public static void homePage(String url){
         String str;
         //创建一个webclient
+
         WebClient webClient = new WebClient();
 
+//        webClient.getWebConsole().setLogger(null);
 //        //htmlunit 对css和javascript的支持不好，所以请关闭之
-//        webClient.getOptions().setCssEnabled(false);
+        webClient.getOptions().setCssEnabled(false);
 //        webClient.getOptions().setUseInsecureSSL(true);
         webClient.getOptions().setThrowExceptionOnFailingStatusCode(false);
 //        webClient.getCookieManager().setCookiesEnabled(true);
@@ -36,6 +38,8 @@ public class HttpUtils {
         webClient.getOptions().setThrowExceptionOnScriptError(false);
         webClient.waitForBackgroundJavaScript(1000);
         webClient.waitForBackgroundJavaScriptStartingBefore(1000);
+
+
         //获取页面
         HtmlPage page = null;
         int times =10;
@@ -78,7 +82,10 @@ public class HttpUtils {
     public static void main(String[] args) {
 //        System.out.println(request("http://www.douyu.com/32892"));
 
+
+
         homePage("http://www.douyu.com/312410");
+
 
 
     }
