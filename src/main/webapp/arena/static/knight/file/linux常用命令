@@ -96,6 +96,7 @@ yum install httpd
 /etc/init.d/httpd start
 
 
+===  git  ===
 git 生成 key
 
 cd ~/.ssh
@@ -103,3 +104,11 @@ ls
 查看本地存在的key 名为id_rsa.pub 或 id_dsa.pub
 
 生成key – ssh-keygen -t rsa -C “txnet2@126.com” 一条命令即可，后面会提示输入密码什么的，果断直接回车，空密码
+
+
+=== 系统 ===
+查看系统版本
+lsb_release -a
+
+开机启动服务
+chkconfig

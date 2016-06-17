@@ -1,0 +1,65 @@
+参考网址
+
+http://blog.csdn.net/hengyunabc/article/details/47308913
+http://www.360doc.com/content/16/0130/08/10675863_531610299.shtml  √
+
+
+20160617 不完美deploy 过程:
+1问题 会下载依赖包到本地 ,准备尝试修改 repo.local 到.m2
+2不了解命令maven
+
+
+deploy项目的 pom.xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.genji.htmlunit</groupId>
+    <artifactId>htmlunit</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <packaging>jar</packaging>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
+    </properties>
+
+
+    <distributionManagement>
+        <repository>
+            <id>genji-repo</id>
+            <url>file:///Users/admin/Desktop/GitRepository/htmlunit/deploy</url>
+        </repository>
+    </distributionManagement>
+
+</project>
+
+mvn clean deploy -B -e -U -Dmaven.repo.local=deploy
+
+然后把生成的包 复制到自己的库上
+
+
+
+
+依赖上面项目的方法
+
+在pom.xml 添加一个repository
+
+ <repositories>
+        <repository>
+            <id>github</id>
+            <url>https://github.com/duelgenji/repo</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+添加依赖
+     <dependency>
+            <groupId>com.genji.htmlunit</groupId>
+            <artifactId>htmlunit</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
