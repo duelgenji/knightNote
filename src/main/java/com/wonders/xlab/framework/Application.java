@@ -1,27 +1,16 @@
 package com.wonders.xlab.framework;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonSerializer;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializerProvider;
-import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.datatype.hibernate4.Hibernate4Module;
 import com.fasterxml.jackson.datatype.joda.JodaModule;
 import com.fasterxml.jackson.datatype.joda.cfg.JacksonJodaDateFormat;
 import com.fasterxml.jackson.datatype.joda.ser.DateTimeSerializer;
 import com.wonders.xlab.framework.repository.MyRepositoryImpl;
 import org.joda.time.DateTime;
-import org.joda.time.DateTimeZone;
 import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.boot.orm.jpa.EntityScan;
@@ -29,24 +18,17 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.format.datetime.DateFormatter;
-import org.springframework.format.datetime.DateFormatterRegistrar;
-import org.springframework.format.datetime.joda.JodaTimeFormatterRegistrar;
-import org.springframework.format.number.NumberFormatAnnotationFormatterFactory;
-import org.springframework.format.support.DefaultFormattingConversionService;
-import org.springframework.format.support.FormattingConversionService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
-import java.util.TimeZone;
+import springfox.documentation.builders.PathSelectors;
+import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spring.web.plugins.Docket;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
 @EnableJpaAuditing
@@ -57,6 +39,7 @@ import java.util.TimeZone;
 @EnableScheduling
 @EntityScan({"${app.basePackages}"})
 @ComponentScan({"${app.basePackages}"})
+@EnableSwagger2
 public class Application extends SpringBootServletInitializer {
 
     @Value("${jackson.indent.output}")
@@ -107,6 +90,16 @@ public class Application extends SpringBootServletInitializer {
 //        connector.setPort(port());
 //        return connector;
 //    }
+
+
+    @Bean
+    public Docket swaggerSpringfoxDocket() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .genericModelSubstitutes(ResponseEntity.class)
+                .select()
+                .paths(PathSelectors.any())
+                .build();
+    }
 
     @Bean
     public RestTemplate restTemplate() {

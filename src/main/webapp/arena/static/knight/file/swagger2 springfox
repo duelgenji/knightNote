@@ -1,0 +1,46 @@
+官网
+http://springfox.github.io/springfox/
+
+依赖
+
+     <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>2.5.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>2.5.0</version>
+        </dependency>
+
+
+
+配置
+
+
+主入口上
+@EnableSwagger2
+
+
+configuration 例:
+
+
+  @Bean
+    public Docket swaggerSpringfoxDocket() {
+        Docket swaggerSpringMvcPlugin = new Docket(DocumentationType.SWAGGER_2)
+//                .apiInfo(apiInfo())
+                .genericModelSubstitutes(ResponseEntity.class)
+                .select()
+                .paths(PathSelectors.any())
+                .build();
+        return swaggerSpringMvcPlugin;
+    }
+
+
+
+被遍历的包 路径在.path()中
+
+详细参数:
+
