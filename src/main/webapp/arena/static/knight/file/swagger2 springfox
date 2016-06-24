@@ -27,15 +27,13 @@ http://springfox.github.io/springfox/
 configuration 例:
 
 
-  @Bean
+   @Bean
     public Docket swaggerSpringfoxDocket() {
-        Docket swaggerSpringMvcPlugin = new Docket(DocumentationType.SWAGGER_2)
-//                .apiInfo(apiInfo())
+        return new Docket(DocumentationType.SWAGGER_2)
                 .genericModelSubstitutes(ResponseEntity.class)
                 .select()
-                .paths(PathSelectors.any())
+                .apis(RequestHandlerSelectors.basePackage("com.wonders.xlab.pcidoctor.controller.v2"))
                 .build();
-        return swaggerSpringMvcPlugin;
     }
 
 
