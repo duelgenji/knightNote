@@ -1,0 +1,14 @@
+1.一个带有图片和表单的混合请求 正确写法
+
+代码来自:
+package com.wonders.xlab.pcidoctor.controller.v2.doctor;
+
+
+    @RequestMapping(value = "testFile", method = RequestMethod.POST)
+    @ApiOperation(tags="测试接口" ,value = "文件上传")
+    public ControllerResult<?> testFile(@ModelAttribute TestDto testDto,
+                                        @RequestPart MultipartFile file) {
+        System.out.println(testDto.getName());
+        System.out.println(file.getOriginalFilename());
+        return new ControllerResult<>();
+    }

@@ -26,7 +26,6 @@ http://springfox.github.io/springfox/
 
 configuration 例:
 
-
    @Bean
     public Docket swaggerSpringfoxDocket() {
         return new Docket(DocumentationType.SWAGGER_2)
@@ -40,5 +39,44 @@ configuration 例:
 
 被遍历的包 路径在.path()中
 
-详细参数:
+详细配置:
+    @Bean
+    public Docket swaggerSpringfoxDocket() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .genericModelSubstitutes(ResponseEntity.class)
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("com.wonders.xlab.pciuser.controller"))
+                .paths(Predicates.or(PathSelectors.regex(".*/doctor/.*"),
+                        PathSelectors.regex(".*/doctorPatient/.*"),
+                        PathSelectors.regex(".*/healthServices/get.*"),       //按接口路径过滤接口
+                        PathSelectors.regex(".*/article/.*")
+                ))
+                .paths(PathSelectors.any())
+                .build()
+                .ignoredParameterTypes(Pageable.class,Sort.class)             //按类 忽略parameter
+                .globalResponseMessage(RequestMethod.GET, Collections.<ResponseMessage>emptyList())   //为了界面精简,忽略生成的默认404 403 等错误
+                .globalResponseMessage(RequestMethod.POST, Collections.<ResponseMessage>emptyList());
+    }
 
+
+用法案例:
+1 生成不在参数列表中的传入参数
+
+    @RequestMapping(value = "getArticleList", method = RequestMethod.POST)
+    @ApiOperation(value = "咨询列表")
+    @ApiImplicitParams({@ApiImplicitParam(name = "size",dataType = "integer",paramType = "query")})   //由于pageable是个body 已经被忽略,但是还是需要传入size,所以手动生成size
+    public ControllerResult<ArticleListDto> getArticleList(@RequestParam long articleTypeId,
+                                                           @SortDefault.SortDefaults({@SortDefault(sort="createdDate",direction = Sort.Direction.DESC)}) Sort sort,
+                                                           Pageable pageable) {
+        ArticleType articleType = articleTypeRepository.findOneById(articleTypeId);
+        return new ControllerResult<ArticleListDto>()
+                .setRet_values(new ArticleListDto(articleRepository.findByArticleTypeAndOnlineTrue(articleType,sort)));
+                //.setRet_values(new ArticleListDto(articleRepository.findByArticleTypeAndOnlineTrue(articleType,pageable)));
+    }
+
+2. 在dto中一些注解
+
+public class DoctorAndUser {
+    @ApiModelProperty(required = true, dataType = "java.lang.Integer", example = "1")
+    private long doctorId;
+}

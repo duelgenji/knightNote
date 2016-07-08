@@ -21,3 +21,27 @@ Sort 直接在repository的方法里 使用sort  ，多条件排序
 
   Sort sort = new Sort(Sort.Direction.DESC, "createdDate").and(new Sort(Sort.Direction.DESC, "id"));
   quizDetailRepository.findFirstByQuiz(q, sort);
+
+
+
+
+
+
+Spring controller pageable sort 使用样例:
+
+Pageable 包含 Sort
+
+      代码来自:package com.wonders.xlab.pciuser.controller.v2.information;
+
+
+    @RequestMapping(value = "getArticleList", method = RequestMethod.POST)
+    @ApiOperation(value = "咨询列表")
+    @ApiImplicitParams({@ApiImplicitParam(name = "size",dataType = "integer",paramType = "query")})
+    public ControllerResult<ArticleListDto> getArticleList(@RequestParam long articleTypeId,
+                                                           @SortDefault.SortDefaults({@SortDefault(sort="createdDate",direction = Sort.Direction.DESC)}) Sort sort,
+                                                           Pageable pageable) {
+        ArticleType articleType = articleTypeRepository.findOneById(articleTypeId);
+        return new ControllerResult<ArticleListDto>()
+                .setRet_values(new ArticleListDto(articleRepository.findByArticleTypeAndOnlineTrue(articleType,sort)));
+                //.setRet_values(new ArticleListDto(articleRepository.findByArticleTypeAndOnlineTrue(articleType,pageable)));
+    }

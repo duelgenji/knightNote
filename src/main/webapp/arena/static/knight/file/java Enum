@@ -1,0 +1,51 @@
+springjpa 返回的enum int类型
+  @JsonValue
+    public int getJsonValue() {
+        return ordinal();
+    }
+
+
+代码来自
+package com.wonders.xlab.pcicore.entity.en;
+
+/**
+ * Created by knight on 16/6/29.
+ */
+@JsonDeserialize
+public enum DoctorLoginStatus{
+
+    initial("初始"),
+
+    auditing("审核中"),
+
+    success("审核成功"),
+
+    failure("审核失败");
+
+    private String name;
+
+    DoctorLoginStatus(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    @JsonValue
+    public int getJsonValue() {
+        return ordinal();
+    }
+
+    @JsonCreator
+    public static DoctorLoginStatus createJsonValue(Object obj) {
+        if(obj instanceof String) {
+            return valueOf(obj.toString());
+        }
+        else if(obj instanceof Integer){
+            return values()[Integer.parseInt(obj.toString())];
+        }
+        throw new IllegalArgumentException();
+    }
+
+}
