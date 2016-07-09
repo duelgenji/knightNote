@@ -1,0 +1,9 @@
+http://bbs.iosre.com/t/ttf/1037
+
+google 的 sfnttool.jar 工具
+虽然可以成功导出一个 可以双击正常打开的ttf但是在网页引入的时候报错 Failed to decode downloaded font
+
+
+然后使用了中国人自己开发的字体裁剪工具
+微嵌 公司的一个小工具
+不能直接选择ttf文件导（会出错），但是可以通过先安装ttf字体（直接双击下载的字体），然后选择系统字体导出。
