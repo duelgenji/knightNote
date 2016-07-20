@@ -1,0 +1,22 @@
+git rm --cached filename
+可以删除 已经在版本库上  但是 .gitignore无法忽略的文件   而且本地不删除文件
+
+有多个fetch 和 push 源
+
+指定源名 和 地址
+git remote add ${name} ${ssh path}
+
+
+
+强制回到某个节点:例如
+git reset --hard wdjky/development
+
+增加了--hard以后不会保留本地的改动文件,不会有冲突(但是还会有untracked的文件 需要clean)
+
+删除所有untracked 内容
+git clean -nfd
+git clean -fd
+
+f 文件
+d 目录
+n 代表不真的执行操作,只看执行操作会删除的文件
