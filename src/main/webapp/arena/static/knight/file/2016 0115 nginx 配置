@@ -45,3 +45,30 @@ PATH里增加 %JAVA_HOME%/bin
 
 
 ps: 有时候conf 不起效 是因为进程中有 nginx.exe  结束之
+
+
+
+
+
+
+
+
+linux mac tar.gz安装
+官网下载 tar包
+1.先安装nginx依赖的pcre   brew install pcre  (sudo)
+
+2.找个目录解压nginx.tar.xz
+
+3.在解压出的nginx/
+cd nginx-1.6.0
+$ sudo ./configure --prefix=/usr/local/nginx
+$ sudo make
+$ sudo make install
+
+4.添加环境变量
+echo $path
+
+sudo ln -s /usr/local/nginx/sbin/nginx /usr/local/bin/nginx
+
+5. conf
+/usr/local/nginx/conf/nginx.conf

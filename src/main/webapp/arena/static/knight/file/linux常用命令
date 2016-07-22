@@ -30,8 +30,10 @@ npm-v
 passwd
 
 
-====创建链接====
+====链接====
  ln -s 源文件 目标文件
+ sudo ln -s /usr/local/nginx/sbin/nginx /usr/local/bin/nginx
+ unlink /usr/local/bin/nginx
 
 ==== 端口 进程====
 端口  netstat -tupln
