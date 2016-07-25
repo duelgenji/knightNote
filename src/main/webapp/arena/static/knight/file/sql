@@ -1,0 +1,4 @@
+mysql的外键失效和启用的sql
+　　SET FOREIGN_KEY_CHECKS = 0
+操作结束后
+SET FOREIGN_KEY_CHECKS = 1
