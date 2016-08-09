@@ -23,6 +23,7 @@ Sort 直接在repository的方法里 使用sort  ，多条件排序
   quizDetailRepository.findFirstByQuiz(q, sort);
 
 
+  PageRequest pageable = new PageRequest(flag, 20, new Sort(Sort.Direction.DESC, "createdDate"));
 
 
 
