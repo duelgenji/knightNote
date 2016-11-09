@@ -1,0 +1,9 @@
+
+p12->pem
+openssl pkcs12 -in server.p12 -out server.pem -nodes
+
+::JKS → P12
+keytool -importkeystore -srckeystore keystore.jks -srcstoretype JKS -deststoretype PKCS12 -destkeystore keystore.p12
+
+::P12 → JKS
+keytool -importkeystore -srckeystore keystore.p12 -srcstoretype PKCS12 -deststoretype JKS -destkeystore keystore.jks

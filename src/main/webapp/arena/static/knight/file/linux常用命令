@@ -114,3 +114,9 @@ lsb_release -a
 
 开机启动服务
 chkconfig
+
+
+=== 时间 ===
+date
+tzselect
+hwclock

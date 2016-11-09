@@ -2,3 +2,9 @@ mysql的外键失效和启用的sql
 　　SET FOREIGN_KEY_CHECKS = 0
 操作结束后
 SET FOREIGN_KEY_CHECKS = 1
+
+
+
+mysql 中文排序
+SELECT * FROM fw_pci.medicine where name like "%片%" order by CONVERT( name USING gbk ) COLLATE gbk_chinese_ci ASC LIMIT 0, 1000
+
