@@ -1,5 +1,6 @@
 package com.knightNote.utils;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import org.dom4j.Document;
 import org.dom4j.io.OutputFormat;
 import org.dom4j.io.XMLWriter;
@@ -91,17 +92,16 @@ public class WxUtils {
         HttpEntity<Map<String, String>> request = new HttpEntity<>(map, headers);
 
 
-//        String result = restTemplate.getForObject(WX_URL + "token?grant_type=client_credential&appid="+WX_APP_ID+"&secret="+WX_APP_SECRET, String.class);
-//        System.out.println(result);
-//        JSONObject json = new JSONObject(result);
+        JsonNode result = restTemplate.getForObject(WX_URL + "token?grant_type=client_credential&appid="+WX_APP_ID+"&secret="+WX_APP_SECRET, JsonNode.class);
 //
-//        System.out.println("token:"+ json.get("access_token") + ", time"+json.get("expires_in"));
+        System.out.println(result);
+        System.out.println("token:"+ result.get("access_token") + ", time"+result.get("expires_in"));
 
-        Map<String,String> res = new HashMap<>();
-        res.put("asd","asd");
+//        Map<String,String> res = new HashMap<>();
+//        res.put("asd","asd");
 
-        System.out.println(res.get("asd"));
-        System.out.println(res.get("asd1"));
+//        System.out.println(res.get("asd"));
+//        System.out.println(res.get("asd1"));
 
 
     }

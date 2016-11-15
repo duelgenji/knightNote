@@ -1,4 +1,4 @@
-package com.knightNote.entity.system;
+package com.knightNote.entity.wx;
 
 import com.wonders.xlab.framework.entity.AbstractBaseEntity;
 

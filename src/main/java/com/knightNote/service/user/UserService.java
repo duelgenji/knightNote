@@ -1,13 +1,10 @@
 package com.knightNote.service.user;
 
-import com.knightNote.controller.GlobalControllerExceptionHandler;
+import com.knightNote.other.GlobalControllerExceptionHandler;
 import com.knightNote.entity.user.User;
 import com.knightNote.repository.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created by knight on 16/2/23.

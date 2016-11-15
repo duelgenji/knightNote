@@ -1,7 +1,6 @@
 package com.knightNote.controller.regular;
 
-import com.knightNote.controller.GlobalControllerExceptionHandler;
-import com.knightNote.controller.GlobalControllerExceptionHandler.*;
+import com.knightNote.other.GlobalControllerExceptionHandler;
 import com.knightNote.entity.user.User;
 import com.knightNote.repository.regular.RegularRepository;
 import com.knightNote.repository.regular.RegularSubRepository;

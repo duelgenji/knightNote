@@ -1,6 +1,6 @@
-package com.knightNote.repository.system;
+package com.knightNote.repository.wx;
 
-import com.knightNote.entity.system.WxAccessToken;
+import com.knightNote.entity.wx.WxAccessToken;
 import com.wonders.xlab.framework.repository.MyRepository;
 
 public interface WxAccessTokenRepository extends MyRepository<WxAccessToken, Long> {

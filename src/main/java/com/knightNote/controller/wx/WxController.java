@@ -1,4 +1,4 @@
-package com.knightNote.controller.system;
+package com.knightNote.controller.wx;
 
 import com.knightNote.entity.system.WxPostMessage;
 import com.knightNote.repository.system.WxPostMessageRepository;
@@ -23,13 +23,13 @@ import static com.knightNote.utils.WxUtils.doc2String;
 public class WxController {
 
     @Autowired
-    WxService wxService;
+    private WxService wxService;
 
     @Autowired
-    WxPostMessageRepository wxPostMessageRepository;
+    private WxPostMessageRepository wxPostMessageRepository;
 
     @Transactional
-    @RequestMapping("wx")
+    @RequestMapping("token")
     public Map<String ,Object> wx(){
         Map<String, Object> res = new HashMap<>();
 

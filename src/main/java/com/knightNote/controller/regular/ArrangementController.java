@@ -1,8 +1,7 @@
 package com.knightNote.controller.regular;
 
-import com.knightNote.controller.GlobalControllerExceptionHandler.UserNotFoundException;
+import com.knightNote.other.GlobalControllerExceptionHandler.UserNotFoundException;
 import com.knightNote.entity.regular.Arrangement;
-import com.knightNote.entity.regular.ConvictCondition;
 import com.knightNote.entity.user.User;
 import com.knightNote.repository.regular.*;
 import com.knightNote.repository.user.UserRepository;
@@ -13,14 +12,12 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
