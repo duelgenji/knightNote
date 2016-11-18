@@ -25,6 +25,10 @@ public class WxPostMessage extends AbstractBaseEntity<Long> {
 
     private String msgId;
 
+    private String event;
+
+    private String eventKey;
+
     public String getToUserName() {
         return toUserName;
     }
@@ -71,5 +75,21 @@ public class WxPostMessage extends AbstractBaseEntity<Long> {
 
     public void setMsgId(String msgId) {
         this.msgId = msgId;
+    }
+
+    public String getEvent() {
+        return event;
+    }
+
+    public void setEvent(String event) {
+        this.event = event;
+    }
+
+    public String getEventKey() {
+        return eventKey;
+    }
+
+    public void setEventKey(String eventKey) {
+        this.eventKey = eventKey;
     }
 }

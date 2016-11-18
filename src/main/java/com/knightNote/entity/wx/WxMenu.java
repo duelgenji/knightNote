@@ -13,16 +13,16 @@ import javax.persistence.*;
 public class WxMenu extends AbstractBaseEntity<Long> {
 
     //必须 菜单标题，不超过16个字节，子菜单不超过60个字节
-    private String name;
+    private String menuName;
 
     //必须 菜单的响应动作类型
-    private String type;
+    private String menuType;
 
     //click等点击类型必须 ;菜单KEY值，用于消息接口推送，不超过128字节
-    private String key;
+    private String menuKey;
 
     //iew类型必须 ;网页链接，用户点击菜单可打开链接，不超过1024字节
-    private String url;
+    private String menuUrl;
 
     //media_id类型和view_limited类型必须; 调用新增永久素材接口返回的合法media_id
     private String media_id;
@@ -32,35 +32,35 @@ public class WxMenu extends AbstractBaseEntity<Long> {
     private WxMenu wxMenu;
 
     public String getName() {
-        return name;
+        return menuName;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.menuName = name;
     }
 
     public String getType() {
-        return type;
+        return menuType;
     }
 
     public void setType(String type) {
-        this.type = type;
+        this.menuType = type;
     }
 
     public String getKey() {
-        return key;
+        return menuKey;
     }
 
     public void setKey(String key) {
-        this.key = key;
+        this.menuKey = key;
     }
 
     public String getUrl() {
-        return url;
+        return menuUrl;
     }
 
     public void setUrl(String url) {
-        this.url = url;
+        this.menuUrl = url;
     }
 
     public String getMedia_id() {

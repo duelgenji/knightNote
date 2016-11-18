@@ -151,6 +151,8 @@
 
     </dependencies>
 
-
+    <build>
+        <finalName>knight</finalName>
+    </build>
 
 </project>

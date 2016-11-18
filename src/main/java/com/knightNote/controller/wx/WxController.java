@@ -102,16 +102,70 @@ public class WxController {
             wxPostMessage.setCreateTime(res.get("CreateTime"));
             wxPostMessage.setMsgType(res.get("MsgType"));
             wxPostMessage.setContent(res.get("Content"));
+            wxPostMessage.setEvent(res.get("Event"));
+            wxPostMessage.setEventKey(res.get("EventKey"));
             wxPostMessage.setMsgId(res.get("MsgId"));
             wxPostMessageRepository.save(wxPostMessage);
 
             Map<String,String> map = new HashMap<>();
-
             map.put("ToUserName",res.get("FromUserName"));
             map.put("FromUserName",res.get("ToUserName"));
             map.put("CreateTime",""+new Date().getTime());
             map.put("MsgType","text");
-            map.put("Content",res.get("Content"));
+            String content = "";
+            if(wxPostMessage.getEvent()!=null){
+                if(wxPostMessage.getEvent().toLowerCase().equals("click")){
+                    String eventKey = wxPostMessage.getEventKey();
+                    String code = eventKey.split("_")[1];
+                    switch (code){
+                        case "00":
+                            content = "大卫";
+                            break;
+                        case "01":
+                            content = "查理大帝";
+                            break;
+                        case "02":
+                            content = "凯撒大帝";
+                            break;
+                        case "03":
+                            content = "亚历山大大帝";
+                            break;
+                        case "10":
+                            content = "雅典娜";
+                            break;
+                        case "11":
+                            content = "朱蒂斯";
+                            break;
+                        case "12":
+                            content = "阿金尼";
+                            break;
+                        case "13":
+                            content = "拉结";
+                            break;
+                        case "20":
+                            content = "霍吉尔";
+                            break;
+                        case "21":
+                            content = "拉海尔";
+                            break;
+                        case "22":
+                            content = "兰斯洛特";
+                            break;
+                        case "23":
+                            content = "赫克托";
+                            break;
+                        default:
+                            content = "你是智障";
+                            break;
+
+                    }
+
+                }
+
+            }else{
+                content = res.get("Content");
+            }
+            map.put("Content",content);
 
             document = DocumentHelper.createDocument();
             nodeElement = document.addElement("xml");

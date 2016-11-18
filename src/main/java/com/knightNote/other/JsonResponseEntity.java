@@ -35,6 +35,11 @@ public class JsonResponseEntity<T> {
         return this;
     }
 
+    public static <T> JsonResponseEntity<T> success(T data) {
+        return new JsonResponseEntity<T>()
+                .setData(data);
+    }
+
     public static <T> JsonResponseEntity<T> success(T data, String msg) {
         return new JsonResponseEntity<T>()
                 .setData(data)

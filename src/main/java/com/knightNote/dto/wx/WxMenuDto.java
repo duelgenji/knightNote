@@ -9,15 +9,16 @@ import java.util.List;
  */
 public class WxMenuDto {
 
-    List<Button> button;
+    public List<Button> button;
 
-    public class Button{
+    public static class Button{
+        public Long id;
         public String name;
         public String type;
         public String key;
         public String url;
         public String media_id;
-        List<Button> sub_button;
+        public List<Button> sub_button;
     }
 
     public WxMenuDto entity2Dto(List<WxMenu> list){

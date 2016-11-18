@@ -27,4 +27,10 @@ public class GlobalControllerExceptionHandler{
         res.put("error","000");
         return res;
     }
+
+    @ExceptionHandler(ServiceException.class)
+    @ResponseBody
+    public JsonResponseEntity<?> handleConflict(ServiceException e) {
+        return JsonResponseEntity.failure(e.code,e.msg);
+    }
 }
