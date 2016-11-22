@@ -69,10 +69,7 @@ public class WxService {
      * 数据库里的menu更新至微信
      */
     public JsonNode createMenu(){
-
-        JsonNode result = requestForObject("https://api.weixin.qq.com/cgi-bin/menu/create?access_token="+getAccessToken(),entityToDto());
-        return result;
-
+        return requestForObject("https://api.weixin.qq.com/cgi-bin/menu/create?access_token="+getAccessToken(),entityToDto());
     }
 
     /**
@@ -146,6 +143,9 @@ public class WxService {
         return entityToDto();
     }
 
+    public Object sendTemplate(){
+        return requestForObject("https://api.weixin.qq.com/cgi-bin/message/template/send?access_token="+getAccessToken(),entityToDto());
+    }
 
 
     private WxMenuDto entityToDto(){
