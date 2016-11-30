@@ -12,6 +12,6 @@ public class WxTemplateDto {
     public String url;
 
     private Object data;
-    
+
 
 }

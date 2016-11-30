@@ -1,0 +1,6 @@
+ssh
+开启mac自带的ssh
+系统偏好设置 共享 远程登录
+
+新建.ssh
+ssh-keygen -t rsa
