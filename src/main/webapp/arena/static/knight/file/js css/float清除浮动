@@ -1,0 +1,26 @@
+<div class="outer1">
+    <div class="inner1"></div>
+    <div class="inner2"></div>
+    <div class="inner3"></div>
+</div>
+<div class="outer2">
+    ...
+</div>
+<div class="outer3">
+    ...
+</div>
+
+
+
+当inner1 2 3 要在outer1中 1 2在左边 3在靠右边,
+就要使用 1 2 float left  3 float right
+
+outer1 不用使用float
+
+如果outer1 用了float 以后 outer2 和 3 就会因为上面有float 改变结构
+
+
+???忘记
+cleat:both;
+content : " ";
+display:table;
