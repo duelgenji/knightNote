@@ -1,0 +1,212 @@
+framinghamscore insert
+
+
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge20_34', '-9');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge35_39', '-4');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge40_44', '0');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge45_49', '3');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge50_54', '6');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge55_59', '8');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge60_64', '10');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge65_69', '11');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge70_74', '12');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge75_79', '13');
+
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge20_34 | FHSTC_160', '0');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge35_39 | FHSTC_160', '0');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge40_44 | FHSTC_160', '0');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge45_49 | FHSTC_160', '0');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge50_54 | FHSTC_160', '0');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge55_59 | FHSTC_160', '0');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge60_64 | FHSTC_160', '0');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge65_69 | FHSTC_160', '0');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge70_74 | FHSTC_160', '0');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge75_79 | FHSTC_160', '0');
+
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge20_34 | FHSTC160_199', '4');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge35_39 | FHSTC160_199', '4');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge40_44 | FHSTC160_199', '3');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge45_49 | FHSTC160_199', '3');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge50_54 | FHSTC160_199', '2');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge55_59 | FHSTC160_199', '2');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge60_64 | FHSTC160_199', '1');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge65_69 | FHSTC160_199', '1');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge70_74 | FHSTC160_199', '0');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge75_79 | FHSTC160_199', '0');
+
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge20_34 | FHSTC200_239', '7');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge35_39 | FHSTC200_239', '7');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge40_44 | FHSTC200_239', '5');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge45_49 | FHSTC200_239', '5');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge50_54 | FHSTC200_239', '3');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge55_59 | FHSTC200_239', '3');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge60_64 | FHSTC200_239', '1');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge65_69 | FHSTC200_239', '1');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge70_74 | FHSTC200_239', '0');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge75_79 | FHSTC200_239', '0');
+
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge20_34 | FHSTC240_279', '9');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge35_39 | FHSTC240_279', '9');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge40_44 | FHSTC240_279', '6');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge45_49 | FHSTC240_279', '6');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge50_54 | FHSTC240_279', '4');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge55_59 | FHSTC240_279', '4');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge60_64 | FHSTC240_279', '2');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge65_69 | FHSTC240_279', '2');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge70_74 | FHSTC240_279', '1');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge75_79 | FHSTC240_279', '1');
+
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge20_34 | FHSTC280_', '11');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge35_39 | FHSTC280_', '11');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge40_44 | FHSTC280_', '8');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge45_49 | FHSTC280_', '8');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge50_54 | FHSTC280_', '5');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge55_59 | FHSTC280_', '5');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge60_64 | FHSTC280_', '3');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge65_69 | FHSTC280_', '3');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge70_74 | FHSTC280_', '1');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge75_79 | FHSTC280_', '1');
+
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge20_34 | FHSSMOKE_T', '8');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge35_39 | FHSSMOKE_T', '8');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge40_44 | FHSSMOKE_T', '5');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge45_49 | FHSSMOKE_T', '5');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge50_54 | FHSSMOKE_T', '3');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge55_59 | FHSSMOKE_T', '3');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge60_64 | FHSSMOKE_T', '1');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge65_69 | FHSSMOKE_T', '1');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge70_74 | FHSSMOKE_T', '1');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge75_79 | FHSSMOKE_T', '1');
+
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge20_34 | FHSSMOKE_F', '0');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge35_39 | FHSSMOKE_F', '0');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge40_44 | FHSSMOKE_F', '0');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge45_49 | FHSSMOKE_F', '0');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge50_54 | FHSSMOKE_F', '0');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge55_59 | FHSSMOKE_F', '0');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge60_64 | FHSSMOKE_F', '0');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge65_69 | FHSSMOKE_F', '0');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge70_74 | FHSSMOKE_F', '0');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSAge75_79 | FHSSMOKE_F', '0');
+
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSHDL60_', '-1');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSHDL50_59', '0');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSHDL40_49', '1');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSHDL_40', '2');
+
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSSystolic_120 | FHSCURE_F', '0');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSSystolic120_129 | FHSCURE_F', '0');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSSystolic130_139 | FHSCURE_F', '1');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSSystolic140_159 | FHSCURE_F', '1');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSSystolic160_ | FHSCURE_F', '2');
+
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSSystolic_120 | FHSCURE_T', '0');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSSystolic120_129 | FHSCURE_T', '1');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSSystolic130_139 | FHSCURE_T', '1');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSSystolic140_159 | FHSCURE_T', '2');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Male | FHSSystolic160_ | FHSCURE_T', '3');
+
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge20_34', '-7');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge35_39', '-3');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge40_44', '0');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge45_49', '3');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge50_54', '6');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge55_59', '8');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge60_64', '10');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge65_69', '12');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge70_74', '14');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge75_79', '16');
+
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge20_34 | FHSTC_160', '0');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge35_39 | FHSTC_160', '0');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge40_44 | FHSTC_160', '0');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge45_49 | FHSTC_160', '0');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge50_54 | FHSTC_160', '0');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge55_59 | FHSTC_160', '0');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge60_64 | FHSTC_160', '0');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge65_69 | FHSTC_160', '0');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge70_74 | FHSTC_160', '0');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge75_79 | FHSTC_160', '0');
+
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge20_34 | FHSTC160_199', '4');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge35_39 | FHSTC160_199', '4');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge40_44 | FHSTC160_199', '3');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge45_49 | FHSTC160_199', '3');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge50_54 | FHSTC160_199', '2');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge55_59 | FHSTC160_199', '2');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge60_64 | FHSTC160_199', '1');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge65_69 | FHSTC160_199', '1');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge70_74 | FHSTC160_199', '1');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge75_79 | FHSTC160_199', '1');
+
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge20_34 | FHSTC200_239', '8');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge35_39 | FHSTC200_239', '8');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge40_44 | FHSTC200_239', '6');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge45_49 | FHSTC200_239', '6');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge50_54 | FHSTC200_239', '4');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge55_59 | FHSTC200_239', '4');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge60_64 | FHSTC200_239', '2');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge65_69 | FHSTC200_239', '2');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge70_74 | FHSTC200_239', '1');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge75_79 | FHSTC200_239', '1');
+
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge20_34 | FHSTC240_279', '11');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge35_39 | FHSTC240_279', '11');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge40_44 | FHSTC240_279', '8');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge45_49 | FHSTC240_279', '8');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge50_54 | FHSTC240_279', '5');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge55_59 | FHSTC240_279', '5');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge60_64 | FHSTC240_279', '3');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge65_69 | FHSTC240_279', '3');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge70_74 | FHSTC240_279', '2');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge75_79 | FHSTC240_279', '2');
+
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge20_34 | FHSTC280_', '13');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge35_39 | FHSTC280_', '13');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge40_44 | FHSTC280_', '10');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge45_49 | FHSTC280_', '10');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge50_54 | FHSTC280_', '7');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge55_59 | FHSTC280_', '7');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge60_64 | FHSTC280_', '4');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge65_69 | FHSTC280_', '4');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge70_74 | FHSTC280_', '2');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge75_79 | FHSTC280_', '2');
+
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge20_34 | FHSSMOKE_T', '9');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge35_39 | FHSSMOKE_T', '9');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge40_44 | FHSSMOKE_T', '7');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge45_49 | FHSSMOKE_T', '7');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge50_54 | FHSSMOKE_T', '4');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge55_59 | FHSSMOKE_T', '4');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge60_64 | FHSSMOKE_T', '2');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge65_69 | FHSSMOKE_T', '2');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge70_74 | FHSSMOKE_T', '1');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge75_79 | FHSSMOKE_T', '1');
+
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge20_34 | FHSSMOKE_F', '0');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge35_39 | FHSSMOKE_F', '0');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge40_44 | FHSSMOKE_F', '0');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge45_49 | FHSSMOKE_F', '0');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge50_54 | FHSSMOKE_F', '0');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge55_59 | FHSSMOKE_F', '0');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge60_64 | FHSSMOKE_F', '0');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge65_69 | FHSSMOKE_F', '0');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge70_74 | FHSSMOKE_F', '0');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSAge75_79 | FHSSMOKE_F', '0');
+
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSHDL60_', '-1');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSHDL50_59', '0');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSHDL40_49', '1');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSHDL_40', '2');
+
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSSystolic_120 | FHSCURE_F', '0');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSSystolic120_129 | FHSCURE_F', '1');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSSystolic130_139 | FHSCURE_F', '2');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSSystolic140_159 | FHSCURE_F', '3');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSSystolic160_ | FHSCURE_F', '4');
+
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSSystolic_120 | FHSCURE_T', '0');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSSystolic120_129 | FHSCURE_T', '3');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSSystolic130_139 | FHSCURE_T', '4');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSSystolic140_159 | FHSCURE_T', '5');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSSystolic160_ | FHSCURE_T', '6');
