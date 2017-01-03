@@ -210,3 +210,44 @@ INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | 
 INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSSystolic130_139 | FHSCURE_T', '4');
 INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSSystolic140_159 | FHSCURE_T', '5');
 INSERT INTO `fwpci-test`.`framingham_score` (`name`, `score`) VALUES ('Female | FHSSystolic160_ | FHSCURE_T', '6');
+
+
+
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `result`) VALUES ('Male | FHSResult_0', '<1%');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `result`) VALUES ('Male | FHSResult0', '1%');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `result`) VALUES ('Male | FHSResult1', '1%');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `result`) VALUES ('Male | FHSResult2', '1%');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `result`) VALUES ('Male | FHSResult3', '1%');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `result`) VALUES ('Male | FHSResult4', '1%');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `result`) VALUES ('Male | FHSResult5', '2%');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `result`) VALUES ('Male | FHSResult6', '2%');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `result`) VALUES ('Male | FHSResult7', '3%');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `result`) VALUES ('Male | FHSResult8', '4%');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `result`) VALUES ('Male | FHSResult9', '5%');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `result`) VALUES ('Male | FHSResult10', '6%');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `result`) VALUES ('Male | FHSResult11', '8%');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `result`) VALUES ('Male | FHSResult12', '10%');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `result`) VALUES ('Male | FHSResult13', '12%');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `result`) VALUES ('Male | FHSResult14', '16%');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `result`) VALUES ('Male | FHSResult15', '20%');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `result`) VALUES ('Male | FHSResult16', '25%');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `result`) VALUES ('Male | FHSResult17_', '≥30%');
+
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `result`) VALUES ('Female | FHSResult_9', '<1%');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `result`) VALUES ('Female | FHSResult9', '1%');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `result`) VALUES ('Female | FHSResult10', '1%');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `result`) VALUES ('Female | FHSResult11', '1%');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `result`) VALUES ('Female | FHSResult12', '1%');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `result`) VALUES ('Female | FHSResult13', '2%');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `result`) VALUES ('Female | FHSResult14', '2%');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `result`) VALUES ('Female | FHSResult15', '3%');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `result`) VALUES ('Female | FHSResult16', '4%');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `result`) VALUES ('Female | FHSResult17', '5%');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `result`) VALUES ('Female | FHSResult18', '6%');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `result`) VALUES ('Female | FHSResult19', '8%');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `result`) VALUES ('Female | FHSResult20', '11%');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `result`) VALUES ('Female | FHSResult21', '14%');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `result`) VALUES ('Female | FHSResult22', '17%');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `result`) VALUES ('Female | FHSResult23', '22%');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `result`) VALUES ('Female | FHSResult24', '27%');
+INSERT INTO `fwpci-test`.`framingham_score` (`name`, `result`) VALUES ('Female | FHSResult25_', '≥30%');
